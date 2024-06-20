@@ -49,7 +49,7 @@ class Codable_Array_GET_Tests: XCTestCase {
         let e = expectation()
 
         let path = "https://api.github.com/repositories?q=ios"
-        path | .one { (array: [GitHubAPI.Repo]) in
+        path | .get { (array: [GitHubAPI.Repo]) in
             e.fulfill()
         }
 
@@ -63,7 +63,7 @@ class Codable_Array_GET_Tests: XCTestCase {
         let q = URLQueryItem(name: "q", value: "swift")
         let url = URL(string: "https://api.github.com/repositories")!
 
-        url + q | .one { (array: [GitHubAPI.Repo]) in
+        url + q | .get { (array: [GitHubAPI.Repo]) in
             e.fulfill()
         }
 
