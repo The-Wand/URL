@@ -24,11 +24,9 @@ import Wand
 
 public
 extension Ask { // where T: Rest.Model { where T: CloudKit.Model {
-//
-//    class Get: Ask {
-//    }
 
-    typealias Get = Ask
+    class Get: Ask {
+    }
 
     class Post: Ask {
     }
