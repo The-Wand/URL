@@ -30,25 +30,23 @@ import Wand
 extension URLRequest: Obtain {
 
     @inline(__always)
-    public static func obtain(by wand: Wand?) -> Self {
+    public 
+    static
+    func obtain(by wand: Wand?) -> Self {
 
         guard let wand else {
             fatalError("No context")
         }
 
-        let url: URL = wand.get() ?? {
-            let path: String = wand.get()!
-            return path|
-        }()
-
-        let method: Rest.Method     = wand.get() ?? .GET
+        let url:     URL            = wand.get() ?? (wand.get()! as String)|
+        let method:  Rest.Method    = wand.get() ?? .GET
         let timeout: TimeInterval   = wand.get() ?? method.timeout
 
-        var request = URLRequest(url: url, 
-                                 timeoutInterval: timeout)
-        request.allHTTPHeaderFields = wand.get()
-        request.httpMethod = method.rawValue
-        request.httpBody = wand.get()
+        var request                 = URLRequest(url: url, timeoutInterval: timeout)
+        request.allHTTPHeaderFields = wand.get() ?? ["Accept": "application/json",
+                                                     "Content-Type": "application/json"]
+        request.httpBody            = wand.get()
+        request.httpMethod          = method.rawValue
 
         return request
     }
