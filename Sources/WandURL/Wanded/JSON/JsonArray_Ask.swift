@@ -22,6 +22,33 @@
 import Foundation
 import Wand
 
+extension Array {
+
+    /// Convert
+    ///
+    /// let data: Data = array|
+    ///
+    @inline(__always)
+    postfix
+    public
+    static
+    func |(p: Self) -> Data {
+        try! JSONSerialization.data(withJSONObject: p, options: [])
+    }
+
+}
+
+/// Convert
+///
+/// let array: [Any]? = data|
+///
+@inline(__always)
+postfix
+public
+func |(raw: Data) throws -> [Any]? {
+    try? JSONSerialization.jsonObject(with: raw, options: []) as? [Any]
+}
+
 /// Ask
 ///
 /// "https://api.github.com/gists" | { (array: [Any]) in
@@ -56,11 +83,8 @@ func | (url: URL, handler: @escaping ([Any])->() ) -> Wand {
     //Request for a first time
 
     //Prepare context
-    wand.save(url)
-
-    let headers = ["Accept": "application/json", //TODO: remove c-p JsonArray_Ask
-                   "Content-Type": "application/json"]
-    wand.save(headers)
+    wand.store(url)
+    wand.store(JSON.defaultHeaders)
 
     //Perfom request
     url | .one { (data: Data) in

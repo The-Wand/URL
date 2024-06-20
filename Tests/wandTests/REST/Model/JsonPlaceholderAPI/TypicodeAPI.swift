@@ -21,25 +21,25 @@
 import WandURL
 import Wand
 
-public struct TypicodeAPI {
+public 
+struct TypicodeAPI {
 
-    public typealias Model = TypicodeAPI_Model
-
-}
-
-public protocol TypicodeAPI_Model: Rest.Model {
+    public 
+    typealias Model = TypicodeAPI_Model
 
 }
 
-public extension TypicodeAPI_Model {
+public 
+protocol TypicodeAPI_Model: Rest.Model {
 
-    static var base: String? {
+}
+
+public 
+extension TypicodeAPI_Model {
+
+    static 
+    var base: String? {
         "https://jsonplaceholder.typicode.com/"
-    }
-
-    static var headers: [String : String]? {
-        ["Accept": "application/json",
-         "Content-Type": "application/json"]
     }
 
 }

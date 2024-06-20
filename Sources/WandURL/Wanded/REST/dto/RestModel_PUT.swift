@@ -34,13 +34,8 @@ import Wand
 public 
 func |<T: Rest.Model> (dto: T, put: Ask<T>.Put) -> Wand {
 
-    let wand: Wand = nil
-
-    let path = T.path
-    wand.save(path)
-
-    let body: Data = try! JSONEncoder().encode(dto)
-    wand.save(body)
+    let wand = dto.wand
+    wand.store(dto| as Data)
 
     return wand | put
 }
@@ -57,7 +52,9 @@ func |<T: Rest.Model> (dto: T, put: Ask<T>.Put) -> Wand {
 public 
 func |<T: Rest.Model> (wand: Wand, put: Ask<T>.Put) -> Wand {
 
-    wand.save(Rest.Method.PUT)
+    wand.addDefault(T.path)
+    wand.addDefault(T.headers)
+    wand.addDefault(Rest.Method.PUT)
 
     _ = wand.answer(the: put)
     return wand | .one { (data: Data) in
@@ -66,7 +63,6 @@ func |<T: Rest.Model> (wand: Wand, put: Ask<T>.Put) -> Wand {
         wand.add(model)
 
     }
-
 }
 
 #endif

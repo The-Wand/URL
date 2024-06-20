@@ -66,7 +66,7 @@ extension Ask where T: Rest.Model {
     @inline(__always)
     static
     func delete(handler: @escaping (T)->() ) -> Delete {
-        Delete.one(handler: handler)
+        .one(handler: handler)
     }
 
 }

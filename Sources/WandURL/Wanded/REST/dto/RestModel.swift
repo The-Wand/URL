@@ -24,7 +24,7 @@ import Wand
 
 @available(visionOS, unavailable)
 public
-protocol Rest_Model: Codable {
+protocol Rest_Model: Wanded, Codable {
 
     
     static
@@ -34,7 +34,7 @@ protocol Rest_Model: Codable {
     var path: String {get}
 
     static 
-    var headers: [String : String]? {get}
+    var headers: [String : String] {get}
 
 }
 
@@ -49,8 +49,8 @@ extension Rest_Model {
     
     public
     static
-    var headers: [String : String]? {
-        nil
+    var headers: [String : String] {
+        JSON.defaultHeaders
     }
     
 }

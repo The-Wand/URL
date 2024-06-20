@@ -41,10 +41,4 @@ extension GitHubAPI_Model {
         "https://api.github.com/"
     }
 
-    static 
-    var headers: [String : String]? {
-        ["Accept": "application/json",
-         "Content-Type": "application/json"]
-    }
-
 }

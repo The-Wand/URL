@@ -34,24 +34,10 @@ import Wand
 public 
 func |<T: Rest.Model> (dto: T, post: Ask<T>.Post) -> Wand {
 
-    let wand: Wand = nil
+    let wand = dto.wand
+    wand.store(dto| as Data)
 
-    if (wand.get() as String?) == nil {
-        let path = T.path
-        wand.save(path)
-    }
-
-    wand.save(Rest.Method.POST)
-
-    let body: Data = try! JSONEncoder().encode(dto)
-    wand.save(body)
-
-    _ = wand.answer(the: post)
-    return wand | .one { (data: Data) in
-        
-        wand.add(dto)
-
-    }
+    return wand | post
 }
 
 /// Ask
@@ -65,7 +51,18 @@ func |<T: Rest.Model> (dto: T, post: Ask<T>.Post) -> Wand {
 @discardableResult
 public 
 func |<T: Rest.Model> (wand: Wand, post: Ask<T>.Post) -> Wand {
-    (wand.get()! as T) | post
+
+    wand.addDefault(T.path)
+    wand.addDefault(T.headers)
+    wand.addDefault(Rest.Method.POST)
+
+    _ = wand.answer(the: post)
+    return wand | .one { (data: Data) in
+
+        let model: T = wand.get()!
+        wand.add(model)
+
+    }
 }
 
 #endif

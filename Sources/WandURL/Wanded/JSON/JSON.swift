@@ -18,39 +18,36 @@
 /// Created by Alex Kozin
 /// 2020 El Machine
 
-import Foundation.NSData
-
-import WandURL
+#if canImport(Foundation)
+import Foundation
 import Wand
 
-extension TypicodeAPI.Post: TypicodeAPI.Model {
+struct JSON {
 
-    public 
     static
-    var path: String {
-        base! + "posts"
-    }
-
-    /// Put Model
-    ///
-    /// model | .put { (done: Model) in
-    ///
-    /// }
-    ///
-    @discardableResult
-    static 
-    func |(model: Self,
-           put: Ask<Self>.Put) -> Wand {
-
-        let wand = model.wand
-
-        let path = Self.path + "/\(model.id)"
-        wand.store(path)
-
-        let body: Data = model|
-        wand.store(body)
-
-        return wand | put
-    }
+    var defaultHeaders = ["Accept": "application/json",
+                          "Content-Type": "application/json"]
 
 }
+
+///
+/// let t: Codable = data|
+///
+@inline(__always)
+postfix
+public
+func |<T: Decodable>(data: Data) throws -> T {
+    try JSONDecoder().decode(T.self, from: data)
+}
+
+///
+/// let data: Data = codable|
+///
+@inline(__always)
+postfix
+public
+func |<T: Codable>(model: T) -> Data {
+    try! JSONEncoder().encode(model)
+}
+
+#endif

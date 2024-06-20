@@ -34,12 +34,9 @@ import Wand
 public 
 func |<T: Rest.Model> (wand: Wand, get: Ask<T>.Get) -> Wand {
 
-    if (wand.get() as String?) == nil {
-        let path = T.path
-        wand.save(path)
-    }
-    
-    wand.store(Rest.Method.GET)
+    wand.addDefault(T.path)
+    wand.addDefault(T.headers)
+    wand.addDefault(Rest.Method.GET)
 
     _ = wand.answer(the: get)
     return wand | .one { (data: Data) in
@@ -61,7 +58,6 @@ func |<T: Rest.Model> (wand: Wand, get: Ask<T>.Get) -> Wand {
 
             }
     }
-
 }
 
 /// Ask

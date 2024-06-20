@@ -23,6 +23,21 @@
 import Foundation
 import Wand
 
+public
+extension Wand {
+
+    @inline(__always)
+    func addDefault<T>(_ object: T, key: String? = nil) {
+
+        let result = key ?? T.self|
+        if !contains(result) {
+            wand.store(object, key: result)
+        }
+
+    }
+
+}
+
 /// Ask
 ///
 /// wand | .get { (array: [Rest.Model]) in
@@ -35,11 +50,9 @@ import Wand
 public
 func |<T: Rest.Model> (wand: Wand, get: Ask<[T]>.Get) -> Wand {
 
-    let wand: Wand = nil
-
-    let path = T.path
-    wand.save(path)
-    wand.save(Rest.Method.GET)
+    wand.addDefault(T.path)
+    wand.addDefault(T.headers)
+    wand.addDefault(Rest.Method.GET)
 
     _ = wand.answer(the: get)
 
@@ -62,7 +75,6 @@ func |<T: Rest.Model> (wand: Wand, get: Ask<[T]>.Get) -> Wand {
 
             }
     }
-
 }
 
 /// Ask

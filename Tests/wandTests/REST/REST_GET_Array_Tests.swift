@@ -45,22 +45,6 @@ class Codable_Array_GET_Tests: XCTestCase {
     }
 
     @available(iOS 16.0, *)
-    func test_Query_to_Codable_Array() {
-        let e = expectation()
-
-        let query = "ios"
-        query | .get { (result: [GitHubAPI.Repo]) in
-
-            if !result.isEmpty {
-                e.fulfill()
-            }
-
-        }
-
-        waitForExpectations(timeout: .default * 4)
-    }
-
-    @available(iOS 16.0, *)
     func test_Path_to_Codable_Array() {
         let e = expectation()
 

@@ -44,8 +44,8 @@ func |(id: Int,
     let wand: Wand = nil
 
     let path = GitHubAPI.Repo.path + "/\(id)"
-    wand.save(path)
-    wand.save(Rest.Method.GET)
+    wand.store(path)
+    wand.store(Rest.Method.GET)
 
     return wand | get
 }

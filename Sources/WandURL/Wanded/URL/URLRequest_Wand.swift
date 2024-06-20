@@ -43,8 +43,7 @@ extension URLRequest: Obtain {
         let timeout: TimeInterval   = wand.get() ?? method.timeout
 
         var request                 = URLRequest(url: url, timeoutInterval: timeout)
-        request.allHTTPHeaderFields = wand.get() ?? ["Accept": "application/json",
-                                                     "Content-Type": "application/json"]
+        request.allHTTPHeaderFields = wand.get() ?? JSON.defaultHeaders
         request.httpBody            = wand.get()
         request.httpMethod          = method.rawValue
 
