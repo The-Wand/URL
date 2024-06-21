@@ -52,12 +52,12 @@ func |<T: Rest.Model> (wand: Wand, get: Ask<[T]>.Get) -> Wand {
 
     wand.addDefault(T.path)
     wand.addDefault(T.headers)
-    wand.addDefault(Rest.Method.GET)
 
     _ = wand.answer(the: get)
 
     return wand | .one { (data: Data) in
-        do { if
+        
+        do  { if
                 let method: Rest.Method = wand.get(),
                 method != .GET,
                 let object: T = wand.get()
@@ -67,13 +67,13 @@ func |<T: Rest.Model> (wand: Wand, get: Ask<[T]>.Get) -> Wand {
             else
             {
                 let reply = try JSONDecoder().decode([T].self, from: data)
-                wand.add(reply) //TODO: remove c-p RestModel_GET
-
-            }} catch(let e) {
-                
+                wand.add(reply)
+            }} 
+            catch(let e)
+            {
                 wand.add(e)
-
             }
+
     }
 }
 
@@ -141,37 +141,25 @@ extension Ask {//} where T == [any Rest.Model] {
     @inline(__always)
     static
     func get(handler: @escaping (T)->() ) -> Get {
-        Get {
-            handler($0)
-            return false
-        }
+        .init(handler: handler)
     }
 
     @inline(__always)
     static
     func post(handler: @escaping (T)->() ) -> Post {
-        Post {
-            handler($0)
-            return false
-        }
+        .init(handler: handler)
     }
 
     @inline(__always)
     static
     func put(handler: @escaping (T)->() ) -> Put {
-        Put {
-            handler($0)
-            return false
-        }
+        .init(handler: handler)
     }
 
     @inline(__always)
     static
     func delete(handler: @escaping (T)->() ) -> Delete {
-        Delete {
-            handler($0)
-            return false
-        }
+        .init(handler: handler)
     }
 
 }

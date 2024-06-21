@@ -22,56 +22,43 @@
 import Foundation
 import Wand
 
-/// Ask
-///
-/// wand | .get { (model: Rest.Model) in
-///
-/// }
-///
 @available(visionOS, unavailable)
-@inline(__always)
-@discardableResult
-public 
-func |<T: Rest.Model> (wand: Wand, get: Ask<T>.Get) -> Wand {
+extension Rest_Model {
 
-    wand.addDefault(T.path)
-    wand.addDefault(T.headers)
-    wand.addDefault(Rest.Method.GET)
+    @inline(__always)
+    public
+    static
+    func wand<T>(_ wand: Wand, asks ask: Ask<T>) {
 
-    _ = wand.answer(the: get)
-    return wand | .one { (data: Data) in
-        do { if
+        let M = T.self as! Rest.Model.Type
+        wand.addDefault(M.path)
+        wand.addDefault(M.headers)
+
+        _ = wand.answer(the: ask)
+        wand | .one { (data: Data) in
+
+            do  { if
                 let method: Rest.Method = wand.get(),
                 method != .GET,
                 let object: T = wand.get()
-            {
+                {
                 wand.add(object)
-            } 
-            else
-            {
-                let reply = try JSONDecoder().decode(T.self, from: data)
-                wand.add(reply) //TODO: remove c-p RestModel_GET_Array
-
-            }} catch(let e) {
-
-                wand.add(e)
-
             }
-    }
-}
+                else
+                {
+                    let D = (T.self as! Decodable.Type).self
+                    let reply = try JSONDecoder().decode(D, from: data)
 
-/// Ask
-///
-/// context | .get { (model: Rest.Model) in
-///
-/// }
-///
-@available(visionOS, unavailable)
-@inline(__always)
-@discardableResult
-public 
-func |<C, T: Rest.Model> (context: C?, get: Ask<T>.Get) -> Wand {
-    Wand.to(context) | get
+                    wand.add(reply as! T)
+                }}
+            catch(let e)
+            {
+                wand.add(e)
+            }
+
+        }
+    }
+
 }
 
 #endif

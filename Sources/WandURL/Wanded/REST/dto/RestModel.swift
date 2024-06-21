@@ -24,7 +24,7 @@ import Wand
 
 @available(visionOS, unavailable)
 public
-protocol Rest_Model: Wanded, Codable {
+protocol Rest_Model: Asking, Wanded, Codable {
 
     
     static
@@ -40,7 +40,7 @@ protocol Rest_Model: Wanded, Codable {
 
 @available(visionOS, unavailable)
 extension Rest_Model {
-
+    
     public
     static
     var path: String? {

@@ -34,7 +34,6 @@ extension Data: Asking, Wanded {
     @inline(__always)
     public
     static func wand<T>(_ wand: Wand, asks ask: Ask<T>) {
-
         //Save ask
         guard wand.answer(the: ask) else {
             return
@@ -45,7 +44,6 @@ extension Data: Asking, Wanded {
         //Make request
         let task: URLSessionDataTask = wand.obtain()
         task.resume()
-
     }
 
 }

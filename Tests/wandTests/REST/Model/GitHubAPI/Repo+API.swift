@@ -45,7 +45,6 @@ func |(id: Int,
 
     let path = GitHubAPI.Repo.path + "/\(id)"
     wand.store(path)
-    wand.store(Rest.Method.GET)
 
     return wand | get
 }
