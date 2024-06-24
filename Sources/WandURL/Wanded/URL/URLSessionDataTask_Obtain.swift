@@ -70,7 +70,7 @@ extension URLSessionDataTask: Obtain {
             }
 
             wand.add(httpResponse)
-            wand.add(data)
+            wand.add(data, for: request.hashValue|)
 
         } as! Self
 

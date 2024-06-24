@@ -23,21 +23,6 @@
 import Foundation
 import Wand
 
-public
-extension Wand {
-
-    @inline(__always)
-    func addDefault<T>(_ object: T, key: String? = nil) {
-
-        let result = key ?? T.self|
-        if !contains(result) {
-            wand.store(object, key: result)
-        }
-
-    }
-
-}
-
 /// Ask
 ///
 /// wand | .get { (array: [Rest.Model]) in

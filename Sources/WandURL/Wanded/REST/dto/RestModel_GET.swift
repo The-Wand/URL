@@ -35,15 +35,16 @@ extension Rest_Model {
         wand.addDefault(M.headers)
 
         _ = wand.answer(the: ask)
-        wand | .one { (data: Data) in
+
+        wand | .one() { (data: Data) in
 
             do  { if
-                let method: Rest.Method = wand.get(),
-                method != .GET,
-                let object: T = wand.get()
+                    let method: Rest.Method = wand.get(),
+                    method != .GET,
+                    let object: T = wand.get()
                 {
-                wand.add(object)
-            }
+                    wand.add(object)
+                }
                 else
                 {
                     let D = (T.self as! Decodable.Type).self
@@ -51,10 +52,10 @@ extension Rest_Model {
 
                     wand.add(reply as! T)
                 }}
-            catch(let e)
-            {
-                wand.add(e)
-            }
+                catch(let e)
+                {
+                    wand.add(e)
+                }
 
         }
     }

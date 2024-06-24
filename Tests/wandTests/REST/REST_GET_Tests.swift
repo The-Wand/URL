@@ -42,7 +42,7 @@ class REST_GET_Tests: XCTestCase {
 
         }
 
-        waitForExpectations(timeout: .default * 4)
+        waitForExpectations(timeout: .default * 2)
     }
 
     @available(iOS 16.0, *)
@@ -59,7 +59,7 @@ class REST_GET_Tests: XCTestCase {
 
         }
 
-        waitForExpectations(timeout: .default * 4)
+        waitForExpectations(timeout: .default * 2)
     }
 
 }

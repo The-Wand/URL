@@ -41,18 +41,61 @@ protocol Rest_Model: Asking, Wanded, Codable {
 @available(visionOS, unavailable)
 extension Rest_Model {
     
+    @inline(__always)
     public
     static
     var path: String? {
         nil
     }
     
+    @inline(__always)
     public
     static
     var headers: [String : String] {
         JSON.defaultHeaders
     }
     
+}
+
+@available(visionOS, unavailable)
+extension Rest_Model {
+
+    @inline(__always)
+    public
+    static
+    var get: Ask<Self>.Get {
+        .init(once: true)
+    }
+
+    @inline(__always)
+    public
+    static
+    var post: Ask<Self>.Post {
+        .init(once: true)
+    }
+
+    @inline(__always)
+    public
+    static
+    var put: Ask<Self>.Put {
+        .init(once: true)
+    }
+
+    //TODO:
+    @inline(__always)
+    public
+    static
+    var delete: Ask<Self>.Get {
+        .init(once: true)
+    }
+
+    @inline(__always)
+    public
+    static
+    var head: Ask<Self>.Get {
+        .init(once: true)
+    }//
+
 }
 
 #endif
