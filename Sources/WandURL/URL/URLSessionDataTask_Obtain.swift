@@ -53,7 +53,6 @@ extension URLSessionDataTask: Obtain {
                 return
             }
 
-
             let statusCode = httpResponse.statusCode
             if !(200...299).contains(httpResponse.statusCode)  {
                 wand.add(Wand.Error.HTTP("Code: \(statusCode)"))
