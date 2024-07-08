@@ -35,8 +35,8 @@ extension Data: Asking, Wanded {
     public
     static func wand<T>(_ wand: Wand, asks ask: Ask<T>) {
 
-        let request: URLRequest = wand.obtain()
-        ask.key = request.hashValue|
+//        let request: URLRequest = wand.obtain()
+//        ask.key = request.hashValue|
 
         //Save ask
         guard wand.answer(the: ask) else {

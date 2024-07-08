@@ -39,6 +39,8 @@ extension URLSessionDataTask: Obtain {
         let session: URLSession = wand.obtain()
         let request: URLRequest = wand.obtain()
 
+//        let ask = wand.asking["Data"]?.last as? Ask<Data>
+
         let task = session.dataTask(with: request) { data, response, error in
             
             if let error = error {
@@ -70,7 +72,7 @@ extension URLSessionDataTask: Obtain {
             }
 
             wand.add(httpResponse)
-            wand.add(data, for: request.hashValue|)
+            wand.add(data)//, for: ask?.key)
 
         } as! Self
 

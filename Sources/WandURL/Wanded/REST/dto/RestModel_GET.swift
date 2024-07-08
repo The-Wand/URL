@@ -38,7 +38,7 @@ extension Rest_Model {
 
         wand | .one() { (data: Data) in
 
-            do  { if
+             do { if
                     let method: Rest.Method = wand.get(),
                     method != .GET,
                     let object: T = wand.get()
