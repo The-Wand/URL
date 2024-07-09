@@ -30,12 +30,12 @@ struct PaymentParams: Codable {
     /**
      * Данные о заказе.
      */
-    lazy var order: OrderParams = OrderParams()
+    var order = OrderParams()
 
     /**
      * Данные о покупателе.
      */
-    var customer: CustomerParams = CustomerParams()
+    var customer = CustomerParams()
 
     /**
      * Данные о внешнем виде страницы оплаты.

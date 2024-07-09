@@ -40,6 +40,8 @@ let package = Package(
     dependencies: [
         .package(url: "https://github.com/el-machine/Any.git", from: "1.0.1"),
         .package(url: "https://github.com/el-machine/Wand.git", from: "1.4.5"),
+
+//        .package(url: "https://github.com/el-machine/lost.math.git", from: "1.4.5"),
     ],
 
     targets: [
