@@ -70,7 +70,7 @@ extension RobokassaAPI_Model {
 @inline(__always)
 public
 func |(params: PaymentParams,
-       get: Ask<RobokassaPayLauncher>.Get) -> Wand {
+       get: Ask<RobokassaPayLauncher.Success>.Get) -> Wand {
 
     let order = params.order
 
@@ -78,38 +78,33 @@ func |(params: PaymentParams,
     let invoiceID = order.invoiceId
     let description = order.description
 
-//    let signature = params.
+    //    let signature = params.
 
-    return (RobokassaPayLauncher.path + [
+    return (RobokassaPayLauncher.Success.path + [
         "MerchantLogin": Robokassa.login,
         "OutSum": outSum,
         "InvoiceID": invoiceID,
         "Description": description,
-//        "SignatureValue": signatureValue,
+        //        "SignatureValue": signatureValue,
     ]) | get
 
 }
 
+/// Ask
+///
+/// paymentParams | { (state: RobokassaPayLauncher.Success) in
+///
+/// }
+///
+@available(iOS 16, *)
+@discardableResult
+@inline(__always)
+public
+func |(params: PaymentParams,
+       handler: @escaping (RobokassaPayLauncher.Success)->() ) -> Wand {
 
+    params | .get(handler: handler)
+
+}
 
 #endif
-
-@available(iOS 16, *) //TODO: Removvvee C-P
-func + (path: String, items: [String: Any?]) -> String? {
-
-    let url = URL(string: path)
-
-    return url?.appending(queryItems: items.map {
-        URLQueryItem(name: $0.key, value: String(describing: $0.value))
-    }).absoluteString
-
-}
-
-@available(iOS 16, *)
-func + (url: URL, items: [String: Any?]) -> URL {
-
-    url.appending(queryItems: items.map {
-        URLQueryItem(name: $0.key, value: String(describing: $0.value))
-    })
-
-}

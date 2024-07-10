@@ -25,17 +25,13 @@ import Foundation
 import Wand
 
 public
-struct RobokassaPayLauncher: Robokassa.API.Model {
+struct RobokassaPayLauncher {
     
-    @inlinable
-    public
-    static
-    var path: String {
-        base! + "Merchant/Index.aspx"
-    }
+
 
 
 //    sealed
+    public
     protocol Result {
 
     }
@@ -46,13 +42,23 @@ struct RobokassaPayLauncher: Robokassa.API.Model {
      * @property resultCode
      * @property stateCode
      */
-    struct Success: Result {
+    public
+    struct Success: Result, Robokassa.API.Model {
+        
+        @inlinable
+        public
+        static
+        var path: String {
+            base! + "Merchant/Index.aspx"
+        }
+
         var invoiceId: Int?
 //        var resultCode: CheckRequestCode?
 //        var stateCode: CheckPayStateCode?
     }
 
 //    data object
+    public
     struct Canceled : Result {
 
     }
@@ -64,6 +70,7 @@ struct RobokassaPayLauncher: Robokassa.API.Model {
      * @property stateCode
      * @property desc
      */
+    public
     class Error: Result {
 
 //        var error: Throwable?
