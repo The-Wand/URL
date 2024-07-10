@@ -26,4 +26,24 @@ func + (url: URL, q: URLQueryItem) -> URL {
     url.appending(queryItems: [q])
 }
 
+@available(iOS 16, *) //TODO: Removvvee C-P
+func + (path: String, items: [String: Any?]) -> String? {
+
+    let url = URL(string: path)
+
+    return url?.appending(queryItems: items.map {
+        URLQueryItem(name: $0.key, value: String(describing: $0.value))
+    }).absoluteString
+
+}
+
+@available(iOS 16, *)
+func + (url: URL, items: [String: Any?]) -> URL {
+
+    url.appending(queryItems: items.map {
+        URLQueryItem(name: $0.key, value: String(describing: $0.value))
+    })
+
+}
+
 #endif
