@@ -37,6 +37,13 @@ struct PaymentParams: Codable {
      */
     var customer = CustomerParams()
 
+    public
+    init(order: OrderParams = OrderParams(), 
+         customer: CustomerParams = CustomerParams()) {
+        self.order = order
+        self.customer = customer
+    }
+
     /**
      * Данные о внешнем виде страницы оплаты.
      */

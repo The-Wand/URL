@@ -50,6 +50,13 @@ struct CustomerParams: Codable {
          */
         var ip: String?
 
+    public
+    init(culture: Locale? = nil, email: String? = nil, ip: String? = nil) {
+        self.culture = culture
+        self.email = email
+        self.ip = ip
+    }
+
 //        @Suppress("DEPRECATION")
 //        private constructor(parcel: Parcel) : this() {
 //            parcel.run {

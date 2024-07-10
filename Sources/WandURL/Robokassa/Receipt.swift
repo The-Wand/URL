@@ -7,6 +7,11 @@
 
 import Foundation
 
+public
 struct Receipt: Codable {
+
+    public
+    init() {
+    }
 
 }

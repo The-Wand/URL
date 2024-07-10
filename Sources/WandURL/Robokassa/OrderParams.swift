@@ -96,6 +96,40 @@ struct OrderParams: Codable {
      */
     var receipt: Receipt?
 
+    public
+    init(invoiceId: Int,
+         previousInvoiceId: Int,
+         orderSum: Double,
+         description: String? = nil,
+         incCurrLabel: String? = nil,
+         isRecurrent: Bool,
+         isHold: Bool,
+         expirationDate: Date? = nil,
+         receipt: Receipt? = nil) {
+        self.invoiceId = invoiceId
+        self.previousInvoiceId = previousInvoiceId
+        self.orderSum = orderSum
+        self.description = description
+        self.incCurrLabel = incCurrLabel
+        self.isRecurrent = isRecurrent
+        self.isHold = isHold
+        self.expirationDate = expirationDate
+        self.receipt = receipt
+    }
+
+    public
+    init() {
+        self.invoiceId = 0
+        self.previousInvoiceId = 0
+        self.orderSum = 0
+        self.description = nil
+        self.incCurrLabel = nil
+        self.isRecurrent = false
+        self.isHold = false
+        self.expirationDate = .none
+        self.receipt = nil
+    }
+
 //    @Suppress("DEPRECATION")
 //    private constructor(parcel: Parcel) : this() {
 //        parcel.run {
