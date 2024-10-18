@@ -24,14 +24,14 @@ import WandURL
 import Wand
 
 @available(visionOS, unavailable)
-class REST_GET_Tests: XCTestCase {
+class REST_HEAD_Tests: XCTestCase {
 
     @available(iOS 16.0, *)
-    func test_Argument_to_REST_Codable() {
+    func test_Argument_to_REST_Codable_HEAD() {
         let e = expectation()
 
         let id = 804244016
-        id | .get { (repo: GitHubAPI.Repo) in
+        id | .head { (repo: GitHubAPI.Repo) in
 
             if
                 repo.id == id,
@@ -40,25 +40,6 @@ class REST_GET_Tests: XCTestCase {
                 e.fulfill()
             }
 
-        }
-
-        waitForExpectations(timeout: .default * 2)
-    }
-
-    @available(iOS 16.0, *)
-    func test_Path_to_REST_Codable() {
-        let e = expectation()
-
-        let id = 42
-        let path = "https://api.github.com/repositories/\(id)"
-        path | .get { (repo: GitHubAPI.Repo) in
-
-            if repo.id == id {
-                e.fulfill()
-            }
-
-        } | { (e: Error) in
-            print(e)
         }
 
         waitForExpectations(timeout: .default * 2)

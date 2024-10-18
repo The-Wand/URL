@@ -34,8 +34,9 @@ struct Rest {
         
         case GET
         case POST
-        case HEAD
         case PUT
+
+        case HEAD
         case PATCH
         case DELETE
 

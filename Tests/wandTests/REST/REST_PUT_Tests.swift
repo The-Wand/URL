@@ -27,7 +27,7 @@ import Wand
 class REST_PUT_Tests: XCTestCase {
 
     @available(iOS 16.0, *)
-    func test_REST_Codable_Put() {
+    func test_Codable_to_REST_PUT() {
         let e = expectation()
 
         let id = (1...100).any

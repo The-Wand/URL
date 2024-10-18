@@ -11,6 +11,12 @@
 		613966662BE0FB0D004C18A3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6162624728BC8E2B00D63EA5 /* Assets.xcassets */; };
 		613F9E522C0862EA0014534F /* Any_ in Frameworks */ = {isa = PBXBuildFile; productRef = 613F9E512C0862EA0014534F /* Any_ */; };
 		615159132BF76A8C001646EA /* WandURL in Frameworks */ = {isa = PBXBuildFile; productRef = 61F648C62BEA122900C2625C /* WandURL */; };
+		615269972CC2B606006C4EB0 /* REST_HEAD_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 615269962CC2B606006C4EB0 /* REST_HEAD_Tests.swift */; };
+		615269982CC2B606006C4EB0 /* REST_HEAD_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 615269962CC2B606006C4EB0 /* REST_HEAD_Tests.swift */; };
+		6152699A2CC2B6FA006C4EB0 /* REST_DELETE_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 615269992CC2B6FA006C4EB0 /* REST_DELETE_Tests.swift */; };
+		6152699B2CC2B6FA006C4EB0 /* REST_DELETE_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 615269992CC2B6FA006C4EB0 /* REST_DELETE_Tests.swift */; };
+		6152699D2CC2B837006C4EB0 /* REST_PATCH_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6152699C2CC2B837006C4EB0 /* REST_PATCH_Tests.swift */; };
+		6152699E2CC2B837006C4EB0 /* REST_PATCH_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6152699C2CC2B837006C4EB0 /* REST_PATCH_Tests.swift */; };
 		6162625428BC8E2B00D63EA5 /* Play.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6162624528BC8E2A00D63EA5 /* Play.swift */; };
 		6162625828BC8E2B00D63EA5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6162624728BC8E2B00D63EA5 /* Assets.xcassets */; };
 		617C7CF02C184FA200FFEA14 /* Package.xctestplan in Resources */ = {isa = PBXBuildFile; fileRef = 617C7CCE2C184FA200FFEA14 /* Package.xctestplan */; };
@@ -76,6 +82,9 @@
 		615158E92BF761DC001646EA /* watchInfo.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = watchInfo.plist; sourceTree = "<group>"; };
 		615158EB2BF765A2001646EA /* info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = info.plist; sourceTree = "<group>"; };
 		615159052BF76666001646EA /* CONTRIB.TXT */ = {isa = PBXFileReference; lastKnownFileType = text; path = CONTRIB.TXT; sourceTree = "<group>"; };
+		615269962CC2B606006C4EB0 /* REST_HEAD_Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = REST_HEAD_Tests.swift; sourceTree = "<group>"; };
+		615269992CC2B6FA006C4EB0 /* REST_DELETE_Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = REST_DELETE_Tests.swift; sourceTree = "<group>"; };
+		6152699C2CC2B837006C4EB0 /* REST_PATCH_Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = REST_PATCH_Tests.swift; sourceTree = "<group>"; };
 		6162624528BC8E2A00D63EA5 /* Play.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Play.swift; sourceTree = "<group>"; };
 		6162624728BC8E2B00D63EA5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		6162624C28BC8E2B00D63EA5 /* Play.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Play.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -186,9 +195,9 @@
 		617C7CC02C184FA200FFEA14 /* JsonPlaceholderAPI */ = {
 			isa = PBXGroup;
 			children = (
+				617C7CBF2C184FA200FFEA14 /* TypicodeAPI.swift */,
 				617C7CBD2C184FA200FFEA14 /* Post.swift */,
 				617C7CBE2C184FA200FFEA14 /* Post+API.swift */,
-				617C7CBF2C184FA200FFEA14 /* TypicodeAPI.swift */,
 			);
 			path = JsonPlaceholderAPI;
 			sourceTree = "<group>";
@@ -207,10 +216,13 @@
 			isa = PBXGroup;
 			children = (
 				617C7CC22C184FA200FFEA14 /* Model */,
-				617C7CC32C184FA200FFEA14 /* REST_GET_Array_Tests.swift */,
 				617C7CC42C184FA200FFEA14 /* REST_GET_Tests.swift */,
+				617C7CC32C184FA200FFEA14 /* REST_GET_Array_Tests.swift */,
 				617C7CC52C184FA200FFEA14 /* REST_POST_Tests.swift */,
 				617C7CC62C184FA200FFEA14 /* REST_PUT_Tests.swift */,
+				615269962CC2B606006C4EB0 /* REST_HEAD_Tests.swift */,
+				6152699C2CC2B837006C4EB0 /* REST_PATCH_Tests.swift */,
+				615269992CC2B6FA006C4EB0 /* REST_DELETE_Tests.swift */,
 			);
 			path = REST;
 			sourceTree = "<group>";
@@ -476,15 +488,18 @@
 			buildActionMask = 2147483647;
 			files = (
 				617C7CF22C184FCD00FFEA14 /* REST_PUT_Tests.swift in Sources */,
+				6152699E2CC2B837006C4EB0 /* REST_PATCH_Tests.swift in Sources */,
 				617C7CF32C184FCD00FFEA14 /* Post+API.swift in Sources */,
 				617C7CF42C184FCD00FFEA14 /* TypicodeAPI.swift in Sources */,
 				617C7CF52C184FCD00FFEA14 /* REST_GET_Array_Tests.swift in Sources */,
 				617C7CF62C184FCD00FFEA14 /* Post.swift in Sources */,
+				615269982CC2B606006C4EB0 /* REST_HEAD_Tests.swift in Sources */,
 				617C7CF72C184FCD00FFEA14 /* Unit.swift in Sources */,
 				617C7CF82C184FCD00FFEA14 /* REST_POST_Tests.swift in Sources */,
 				617C7CF92C184FCD00FFEA14 /* XCTestCase.swift in Sources */,
 				617C7CFA2C184FCD00FFEA14 /* JSON_Array_Tests.swift in Sources */,
 				617C7CFB2C184FCD00FFEA14 /* JSON_Dictionary_Tests.swift in Sources */,
+				6152699B2CC2B6FA006C4EB0 /* REST_DELETE_Tests.swift in Sources */,
 				617C7CFC2C184FCD00FFEA14 /* Repo.swift in Sources */,
 				617C7CFD2C184FCD00FFEA14 /* Employee.swift in Sources */,
 				617C7CFE2C184FCD00FFEA14 /* Data_Tests.swift in Sources */,
@@ -507,15 +522,18 @@
 			buildActionMask = 2147483647;
 			files = (
 				617C7D022C184FCE00FFEA14 /* REST_PUT_Tests.swift in Sources */,
+				6152699D2CC2B837006C4EB0 /* REST_PATCH_Tests.swift in Sources */,
 				617C7D032C184FCE00FFEA14 /* Post+API.swift in Sources */,
 				617C7D042C184FCE00FFEA14 /* TypicodeAPI.swift in Sources */,
 				617C7D052C184FCE00FFEA14 /* REST_GET_Array_Tests.swift in Sources */,
 				617C7D062C184FCE00FFEA14 /* Post.swift in Sources */,
+				615269972CC2B606006C4EB0 /* REST_HEAD_Tests.swift in Sources */,
 				617C7D072C184FCE00FFEA14 /* Unit.swift in Sources */,
 				617C7D082C184FCE00FFEA14 /* REST_POST_Tests.swift in Sources */,
 				617C7D092C184FCE00FFEA14 /* XCTestCase.swift in Sources */,
 				617C7D0A2C184FCE00FFEA14 /* JSON_Array_Tests.swift in Sources */,
 				617C7D0B2C184FCE00FFEA14 /* JSON_Dictionary_Tests.swift in Sources */,
+				6152699A2CC2B6FA006C4EB0 /* REST_DELETE_Tests.swift in Sources */,
 				617C7D0C2C184FCE00FFEA14 /* Repo.swift in Sources */,
 				617C7D0D2C184FCE00FFEA14 /* Employee.swift in Sources */,
 				617C7D0E2C184FCE00FFEA14 /* Data_Tests.swift in Sources */,
@@ -559,7 +577,7 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 440;
+				CURRENT_PROJECT_VERSION = 457;
 				DEVELOPMENT_ASSET_PATHS = "";
 				DEVELOPMENT_TEAM = LZSP4Z4B6A;
 				ENABLE_PREVIEWS = YES;
@@ -620,7 +638,7 @@
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 440;
+				CURRENT_PROJECT_VERSION = 457;
 				DEVELOPMENT_ASSET_PATHS = "";
 				DEVELOPMENT_TEAM = LZSP4Z4B6A;
 				ENABLE_NS_ASSERTIONS = NO;
@@ -674,7 +692,7 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 440;
+				CURRENT_PROJECT_VERSION = 457;
 				DEVELOPMENT_TEAM = LZSP4Z4B6A;
 				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu17;
@@ -722,7 +740,7 @@
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 440;
+				CURRENT_PROJECT_VERSION = 457;
 				DEVELOPMENT_TEAM = LZSP4Z4B6A;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_USER_SCRIPT_SANDBOXING = YES;
@@ -784,7 +802,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_ENTITLEMENTS = App/Entitlements.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 440;
+				CURRENT_PROJECT_VERSION = 457;
 				DEVELOPMENT_TEAM = LZSP4Z4B6A;
 				ENABLE_HARDENED_RUNTIME = NO;
 				"ENABLE_HARDENED_RUNTIME[sdk=macosx*]" = YES;
@@ -872,7 +890,7 @@
 				CODE_SIGN_ENTITLEMENTS = App/Entitlements.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 440;
+				CURRENT_PROJECT_VERSION = 457;
 				DEVELOPMENT_TEAM = LZSP4Z4B6A;
 				ENABLE_HARDENED_RUNTIME = NO;
 				"ENABLE_HARDENED_RUNTIME[sdk=macosx*]" = YES;
@@ -935,7 +953,7 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 440;
+				CURRENT_PROJECT_VERSION = 457;
 				DEVELOPMENT_TEAM = LZSP4Z4B6A;
 				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu17;
@@ -989,7 +1007,7 @@
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 440;
+				CURRENT_PROJECT_VERSION = 457;
 				DEVELOPMENT_TEAM = LZSP4Z4B6A;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_USER_SCRIPT_SANDBOXING = YES;

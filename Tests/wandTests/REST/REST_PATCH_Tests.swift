@@ -24,44 +24,27 @@ import WandURL
 import Wand
 
 @available(visionOS, unavailable)
-class REST_GET_Tests: XCTestCase {
+class REST_PATCH_Tests: XCTestCase {
 
     @available(iOS 16.0, *)
-    func test_Argument_to_REST_Codable() {
+    func test_Codable_to_REST_PATCH() {
         let e = expectation()
 
-        let id = 804244016
-        id | .get { (repo: GitHubAPI.Repo) in
+        let id = (1...100).any
 
-            if
-                repo.id == id,
-                repo.name == "Wand_Foundation"
-            {
+        let post = TypicodeAPI.Post(id: id,
+                                    userId: .any,
+                                    title: .any,
+                                    body: nil)
+        post | .patch { (done: TypicodeAPI.Post) in
+
+            if done.id == id {
                 e.fulfill()
             }
 
         }
 
-        waitForExpectations(timeout: .default * 2)
-    }
-
-    @available(iOS 16.0, *)
-    func test_Path_to_REST_Codable() {
-        let e = expectation()
-
-        let id = 42
-        let path = "https://api.github.com/repositories/\(id)"
-        path | .get { (repo: GitHubAPI.Repo) in
-
-            if repo.id == id {
-                e.fulfill()
-            }
-
-        } | { (e: Error) in
-            print(e)
-        }
-
-        waitForExpectations(timeout: .default * 2)
+        waitForExpectations(timeout: .default * 4)
     }
 
 }
