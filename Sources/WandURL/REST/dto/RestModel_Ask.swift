@@ -34,6 +34,12 @@ extension Ask { // where T: Rest.Model { where T: CloudKit.Model {
     class Put: One {
     }
 
+    class Head: One {
+    }
+
+    class Patch: One {
+    }
+
     class Delete: One {
     }
 
@@ -42,6 +48,7 @@ extension Ask { // where T: Rest.Model { where T: CloudKit.Model {
 @available(visionOS, unavailable)
 public
 extension Ask where T: Rest.Model {
+
 
     @inline(__always)
     static
@@ -58,6 +65,18 @@ extension Ask where T: Rest.Model {
     @inline(__always)
     static
     func put(handler: @escaping (T)->() ) -> Put {
+        .init(handler: handler)
+    }
+
+    @inline(__always)
+    static
+    func head(handler: @escaping (T)->() ) -> Head {
+        .init(handler: handler)
+    }
+
+    @inline(__always)
+    static
+    func patch(handler: @escaping (T)->() ) -> Patch {
         .init(handler: handler)
     }
 
