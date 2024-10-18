@@ -65,7 +65,7 @@ extension RobokassaAPI_Model {
 ///
 /// }
 ///
-@available(iOS 16, *)
+@available(iOS 16, macOS 13, tvOS 16, watchOS 9.0, *)
 @discardableResult
 @inline(__always)
 public
@@ -78,14 +78,12 @@ func |(params: PaymentParams,
     let invoiceID = order.invoiceId
     let description = order.description
 
-    //    let signature = params.
 
     return (RobokassaPayLauncher.Success.path + [
         "MerchantLogin": Robokassa.login,
         "OutSum": outSum,
         "InvoiceID": invoiceID,
         "Description": description,
-        //        "SignatureValue": signatureValue,
     ]) | get
 
 }
