@@ -65,7 +65,7 @@ func | (path: String, handler: @escaping ([String: Any])->() ) -> Wand {
 
 /// Ask
 ///
-/// URL(string: "https://api.github.com/gists") | { (array: [Any]) in
+/// URL(string: "https://api.github.com/gists") | { (dictionary: [String: Any]) in
 ///
 /// }
 ///

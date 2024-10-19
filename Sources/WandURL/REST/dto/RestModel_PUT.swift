@@ -42,7 +42,7 @@ func |<T: Rest.Model> (dto: T, put: Ask<T>.Put) -> Wand {
 
 /// Ask
 ///
-/// wand | .post { (done: T) in
+/// wand | .put { (done: T) in
 ///
 /// }
 ///
