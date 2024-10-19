@@ -43,6 +43,9 @@ extension Ask { // where T: Rest.Model { where T: CloudKit.Model {
     class Delete: One {
     }
 
+    class Next: One {
+    }
+
 }
 
 @available(visionOS, unavailable)
@@ -83,6 +86,12 @@ extension Ask where T: Rest.Model {
     @inline(__always)
     static
     func delete(handler: @escaping (T)->() ) -> Delete {
+        .init(handler: handler)
+    }
+
+    @inline(__always)
+    static
+    func next(handler: @escaping (T)->() ) -> Next {
         .init(handler: handler)
     }
 

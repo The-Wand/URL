@@ -19,41 +19,43 @@
 /// 2020 El Machine
 
 #if canImport(Foundation)
-import Foundation.NSDate
+import Foundation
 import Wand
 
 @available(visionOS, unavailable)
 public
-struct Rest {
+protocol Rest_ModelPaged: Rest.Model {
 
-    public
-    typealias Model = Rest_Model
+    static
+    var nextPage: String {get}
 
-//    public
-//    typealias Paged = Rest_ModelPaged
+}
 
-    public
-    enum Method: String {
-        
-        case GET
-        case POST
-        case PUT
+/// Ask
+///
+/// wand | .get { (models: [T]) in
+///
+/// }
+///
+/// wand | .next { (models: [T]) in
+///
+/// }
+///
+@available(visionOS, unavailable)
+@inline(__always)
+@discardableResult
+public
+func |<T: Rest_ModelPaged> (wand: Wand, next: Ask<T>.Next) -> Wand {
 
-        case HEAD
-        case PATCH
-        case DELETE
+    wand.store(T.nextPage)
 
-        var timeout: TimeInterval {
-            switch self {
-                case .POST, .PUT, .PATCH:
-                    return 30
-                default:
-                    return 15
-            }
-        }
+    _ = wand.answer(the: next)
+    return wand | .one { (data: Data) in
+
+        let model: T = wand.get()!
+        wand.add(model)
 
     }
-
 }
 
 #endif
