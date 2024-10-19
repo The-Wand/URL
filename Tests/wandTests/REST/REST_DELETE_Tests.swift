@@ -30,12 +30,11 @@ class REST_DELETE_Tests: XCTestCase {
     func test_Argument_to_REST_Codable_DELETE() {
         let e = expectation()
 
-        let id = 804244016
-        id | .delete { (repo: GitHubAPI.Repo) in
+        let id = (1...111).any
+        id | .delete { (post: TypicodeAPI.Post) in
 
             if
-                repo.id == id,
-                repo.name == "Wand_Foundation"
+                post.id == id
             {
                 e.fulfill()
             }

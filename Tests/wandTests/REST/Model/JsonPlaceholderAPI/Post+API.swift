@@ -25,20 +25,21 @@ import Wand
 
 extension TypicodeAPI.Post: TypicodeAPI.Model {
 
-    public 
+    public
     static
     var path: String {
         base! + "posts"
     }
 
-    /// Put Model
+    /// Put Post
     ///
     /// model | .put { (done: Model) in
     ///
     /// }
     ///
     @discardableResult
-    static 
+    @inline(__always)
+    static
     func |(model: Self,
            put: Ask<Self>.Put) -> Wand {
 
@@ -53,4 +54,42 @@ extension TypicodeAPI.Post: TypicodeAPI.Model {
         return wand | put
     }
 
+}
+
+/// Get Post
+///
+/// 42 | .get { (post: TypicodeAPI.Post) in
+///
+/// }
+///
+@discardableResult
+@inline(__always)
+func |(id: Int,
+       get: Ask<TypicodeAPI.Post>.Get) -> Wand {
+
+    let wand: Wand = nil
+
+    let path = TypicodeAPI.Post.path + "/\(id)"
+    wand.store(path)
+
+    return wand | get
+}
+
+/// Delete Post
+///
+/// model | .delete { (done: Model) in
+///
+/// }
+///
+@discardableResult
+@inline(__always)
+func |(id: Int,
+       delete: Ask<TypicodeAPI.Post>.Delete) -> Wand {
+
+    let wand: Wand = nil
+
+    let path = TypicodeAPI.Post.path + "/\(id)"
+    wand.store(path)
+
+    return wand | delete
 }

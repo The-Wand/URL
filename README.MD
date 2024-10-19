@@ -9,8 +9,39 @@
 
 }
 
-#Wait for Notification
-UIApplication.didBecomeActiveNotification | { (n: Notification) in
+#Ask JSON model
+URL(string: "https://api.github.com/gists") | { (dictionary: [String: Any]) in
+
+}
+
+#Ask JSON Models array
+"https://api.github.com/gists" | { (array: [Any]) in
+
+}
+
+```
+
+```bash
+
+protocol GitHubAPI.Model: Rest.Model {
+}
+
+extension GitHubAPI.Repo: GitHubAPI.Model {    
+}
+
+#Ask Codable Models Array
+|.get { (result: [GitHubAPI.Repo]) in
+
+}
+
+#Ask Codable Model
+let id = 804244016
+id | .get { (repo: GitHubAPI.Repo) in
+
+}
+
+#Post Codable Model
+repo | .post { (done: GitHubAPI.Repo) in
 
 }
 
