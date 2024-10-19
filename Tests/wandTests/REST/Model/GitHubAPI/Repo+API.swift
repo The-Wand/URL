@@ -38,6 +38,7 @@ extension GitHubAPI.Repo: GitHubAPI.Model {
 /// }
 ///
 @discardableResult
+@inline(__always)
 func |(id: Int,
        get: Ask<GitHubAPI.Repo>.Get) -> Wand {
 
@@ -49,41 +50,21 @@ func |(id: Int,
     return wand | get
 }
 
-/// Get Model
+/// Head Repo
 ///
-/// |.get { (repos: [Repo]) in
+/// id | .head { (done: Int) in
 ///
 /// }
 ///
-//@discardableResult
-//prefix func |(get: Ask<[GitHubAPI.Repo]>.Get) -> Wand {
-//
-//    let wand = Wand()
-//
-//    let path = GitHubAPI.Repo.path
-//    wand.save(path)
-//
-//    wand.save(Rest.Method.GET)
-//
-//    return wand | get
-//}
-//
-///// Get Model
-/////
-///// query | .get { (repos: [Repo]) in
-/////
-///// }
-/////
-//@discardableResult
-//func |(query: String,
-//       get: Ask<[GitHubAPI.Repo]>.Get) -> Wand {
-//
-//    let wand = Wand()
-//
-//    let path = GitHubAPI.Repo.path + "?q=\(query)"
-//    wand.save(path)
-//
-//    wand.save(Rest.Method.GET)
-//
-//    return wand | get
-//}
+@discardableResult
+@inline(__always)
+func |(id: Int,
+       head: Ask<GitHubAPI.Repo>.Head) -> Wand {
+
+    let wand: Wand = nil
+
+    let path = GitHubAPI.Repo.path + "/\(id)"
+    wand.store(path)
+
+    return wand | head
+}

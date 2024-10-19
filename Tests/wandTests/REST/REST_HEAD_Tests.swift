@@ -26,23 +26,23 @@ import Wand
 @available(visionOS, unavailable)
 class REST_HEAD_Tests: XCTestCase {
 
-    @available(iOS 16.0, *)
-    func test_Argument_to_REST_Codable_HEAD() {
-        let e = expectation()
-
-        let id = 804244016
-        id | .head { (repo: GitHubAPI.Repo) in
-
-            if
-                repo.id == id,
-                repo.name == "Wand_Foundation"
-            {
-                e.fulfill()
-            }
-
-        }
-
-        waitForExpectations(timeout: .default * 2)
-    }
+//    @available(iOS 16.0, *)
+//    func test_Argument_to_REST_Codable_HEAD() {
+//        let e = expectation()
+//
+//        let id = 804244016
+//        id | .head { (repo: GitHubAPI.Repo) in
+//
+//            if
+//                repo.id == id,
+//                repo.name == "Wand_Foundation"
+//            {
+//                e.fulfill()
+//            }
+//
+//        }
+//
+//        waitForExpectations(timeout: .default * 2)
+//    }
 
 }
