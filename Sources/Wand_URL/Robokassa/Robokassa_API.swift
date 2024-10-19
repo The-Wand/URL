@@ -21,7 +21,7 @@
 #if canImport(Foundation)
 import Foundation
 
-//import WandURL
+//import Wand_URL
 import Wand
 
 extension Robokassa {

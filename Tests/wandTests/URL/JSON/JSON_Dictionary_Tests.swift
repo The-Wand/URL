@@ -22,7 +22,7 @@
 import Foundation
 import XCTest
 
-import WandURL
+import Wand_URL
 import Wand
 
 @available(visionOS, unavailable)

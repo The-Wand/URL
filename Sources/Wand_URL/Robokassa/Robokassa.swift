@@ -18,27 +18,20 @@
 /// Created by Alex Kozin
 /// 2020 El Machine
 
-import Wand_URL
+public
+struct Robokassa {
 
-public 
-struct GitHubAPI {
+    ///https://docs.robokassa.ru/pay-interface/
+    internal
+    static
+    let login = ""
 
-    public 
-    typealias Model = GitHubAPI_Model
+    internal
+    static
+    let p1 = ""
 
-}
-
-public 
-protocol GitHubAPI_Model: Rest.Model {
-
-}
-
-public 
-extension GitHubAPI_Model {
-
-    static 
-    var base: String? {
-        "https://api.github.com/"
-    }
+    internal
+    static
+    let p2 = ""
 
 }

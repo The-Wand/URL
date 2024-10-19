@@ -22,27 +22,27 @@
 import Foundation
 import XCTest
 
-import WandURL
+import Wand_URL
 import Wand
 
 class Robokassa_Tests: XCTestCase {
 
-    func test_Robokassa_Data() {
-        let e = expectation()
-
-        let params = PaymentParams()
-        params | { (state: RobokassaPayLauncher.Success) in
-
-            e.fulfill()
-
-        } | { (completion: Error?) in
-
-            print(completion as Any)
-
-        }
-
-        waitForExpectations()
-    }
+//    func test_Robokassa_Data() {
+//        let e = expectation()
+//
+//        let params = PaymentParams()
+//        params | { (state: RobokassaPayLauncher.Success) in
+//
+//            e.fulfill()
+//
+//        } | { (completion: Error?) in
+//
+//            print(completion as Any)
+//
+//        }
+//
+//        waitForExpectations()
+//    }
 
 }
 

@@ -20,7 +20,7 @@
 
 import Foundation.NSData
 
-import WandURL
+import Wand_URL
 import Wand
 
 extension TypicodeAPI.Post: TypicodeAPI.Model {
