@@ -22,14 +22,13 @@ URL(string: "https://api.github.com/gists") | { (dictionary: [String: Any]) in
 ```
 
 ```bash
-
+#Ask Codable Models Array
 protocol GitHubAPI.Model: Rest.Model {
 }
 
 extension GitHubAPI.Repo: GitHubAPI.Model {    
 }
 
-#Ask Codable Models Array
 |.get { (result: [GitHubAPI.Repo]) in
 
 }

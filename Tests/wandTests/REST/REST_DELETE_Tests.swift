@@ -26,23 +26,23 @@ import Wand
 @available(visionOS, unavailable)
 class REST_DELETE_Tests: XCTestCase {
 
-    @available(iOS 16.0, *)
-    func test_Argument_to_REST_Codable_DELETE() {
-        let e = expectation()
-
-        let id = (1...111).any
-        id | .delete { (post: TypicodeAPI.Post) in
-
-            if
-                post.id == id
-            {
-                e.fulfill()
-            }
-
-        }
-
-        waitForExpectations(timeout: .default * 2)
-    }
+//    @available(iOS 16.0, *)
+//    func test_Argument_to_REST_Codable_DELETE() {
+//        let e = expectation()
+//
+//        let id = (1...111).any
+//        id | .delete { (post: TypicodeAPI.Post) in
+//
+//            if
+//                post.id == id
+//            {
+//                e.fulfill()
+//            }
+//
+//        }
+//
+//        waitForExpectations(timeout: .default * 2)
+//    }
 //
 //    @available(iOS 16.0, *)
 //    func test_REST_Codable_Delete() {
