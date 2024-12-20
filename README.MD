@@ -22,7 +22,7 @@ URL(string: "https://api.github.com/gists") | { (dictionary: [String: Any]) in
 ```
 
 ```bash
-#Ask Codable Models Array
+#REST
 protocol GitHubAPI.Model: Rest.Model {
 }
 
@@ -45,6 +45,9 @@ repo | .post { (done: GitHubAPI.Repo) in
 }
 
 ```
+### How to
+[![How to Add REST API support to Swift project](https://img.youtube.com/vi/I81GEbc1ES8/0.jpg)](https://www.youtube.com/watch?v=I81GEbc1ES8)
+
 ### Idea
   Imagine that you have a black box that can give you any object 💡  
   You don't know what is already in box or what will happens inside ⚙️   
@@ -62,10 +65,9 @@ Tasks
 - [x] Notification
 - [x] Data
 - [x] URL
-- [x] JsonObject
-- [ ] REST
-
 - [x] Data
+- [x] JsonObject
+- [x] REST
 
 [Alex Kozin](mailto:al@el-machine.com)  
 [El Machine 🤖](https://el-machine.com) 2024
