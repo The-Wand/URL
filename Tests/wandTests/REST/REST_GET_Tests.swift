@@ -18,7 +18,7 @@
 
 import XCTest
 
-import Wand_URL
+import WandURL
 import Wand
 
 @available(visionOS, unavailable)
@@ -33,7 +33,7 @@ class REST_GET_Tests: XCTestCase {
 
             if
                 repo.id == id,
-                repo.name == "Wand_Foundation"
+                repo.name == "Foundation"
             {
                 e.fulfill()
             }

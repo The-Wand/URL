@@ -25,25 +25,25 @@ import Wand
 public
 extension Ask { // where T: Rest.Model { where T: CloudKit.Model {
 
-    class Get: One {
+    class Get: Ask {
     }
 
-    class Post: One {
+    class Post: Ask {
     }
 
-    class Put: One {
+    class Put: Ask {
     }
 
-    class Head: One {
+    class Head: Ask {
     }
 
-    class Patch: One {
+    class Patch: Ask {
     }
 
-    class Delete: One {
+    class Delete: Ask {
     }
 
-    class Next: One {
+    class Next: Ask {
     }
 
 }
@@ -56,43 +56,43 @@ extension Ask where T: Rest.Model {
     @inline(__always)
     static
     func get(handler: @escaping (T)->() ) -> Get {
-        .init(handler: handler)
+        .init(once: true, handler: handler)
     }
 
     @inline(__always)
     static
     func post(handler: @escaping (T)->() ) -> Post {
-        .init(handler: handler)
+        .init(once: true, handler: handler)
     }
 
     @inline(__always)
     static
     func put(handler: @escaping (T)->() ) -> Put {
-        .init(handler: handler)
+        .init(once: true, handler: handler)
     }
 
     @inline(__always)
     static
     func head(handler: @escaping (T)->() ) -> Head {
-        .init(handler: handler)
+        .init(once: true, handler: handler)
     }
 
     @inline(__always)
     static
     func patch(handler: @escaping (T)->() ) -> Patch {
-        .init(handler: handler)
+        .init(once: true, handler: handler)
     }
 
     @inline(__always)
     static
     func delete(handler: @escaping (T)->() ) -> Delete {
-        .init(handler: handler)
+        .init(once: true, handler: handler)
     }
 
     @inline(__always)
     static
     func next(handler: @escaping (T)->() ) -> Next {
-        .init(handler: handler)
+        .init(once: true, handler: handler)
     }
 
 }
