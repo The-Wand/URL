@@ -1,10 +1,10 @@
 {
-  "originHash" : "5be63c516f0c6e573f2fe6cd305f384f5e9295f454958099211770056bee6ada",
+  "originHash" : "7b0bff1d077a5b1af8f5756ab943b05c378df9fa91d3da38fdc877b3f6be9cce",
   "pins" : [
     {
       "identity" : "any",
       "kind" : "remoteSourceControl",
-      "location" : "https://github.com/el-machine/Any",
+      "location" : "https://github.com/The-Wand/Any",
       "state" : {
         "revision" : "ba94ebd40a70c5d6d058ae25f3b7cacb810dfec4",
         "version" : "1.0.1"
@@ -13,7 +13,7 @@
     {
       "identity" : "wand",
       "kind" : "remoteSourceControl",
-      "location" : "https://github.com/el-machine/Wand.git",
+      "location" : "https://github.com/The-Wand/Wand.git",
       "state" : {
         "revision" : "6899d0759566f87405fda5f24fd278227dd93ef0",
         "version" : "1.4.9"
