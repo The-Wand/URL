@@ -22,33 +22,6 @@
 import Foundation
 import Wand
 
-extension Dictionary {
-
-    /// Convert
-    ///
-    /// let data: Data = dictionary|
-    ///
-    @inline(__always)
-    postfix
-    public
-    static
-    func |(p: Self) -> Data {
-        try! JSONSerialization.data(withJSONObject: p, options: [])
-    }
-
-}
-
-/// Convert
-///
-/// let dictionary: [String: Any]? = data|
-///
-@inline(__always)
-postfix
-public
-func |(raw: Data) throws -> [String: Any]? {
-    try? JSONSerialization.jsonObject(with: raw, options: []) as? [String : Any]
-}
-
 /// Ask 
 ///
 /// "https://api.github.com/gists" | { (dictionary: [String: Any]) in

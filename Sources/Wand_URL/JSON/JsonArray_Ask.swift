@@ -22,33 +22,6 @@
 import Foundation
 import Wand
 
-extension Array {
-
-    /// Convert
-    ///
-    /// let data: Data = array|
-    ///
-    @inline(__always)
-    postfix
-    public
-    static
-    func |(p: Self) -> Data {
-        try! JSONSerialization.data(withJSONObject: p, options: [])
-    }
-
-}
-
-/// Convert
-///
-/// let array: [Any]? = data|
-///
-@inline(__always)
-postfix
-public
-func |(raw: Data) throws -> [Any]? {
-    try? JSONSerialization.jsonObject(with: raw, options: []) as? [Any]
-}
-
 /// Ask
 ///
 /// "https://api.github.com/gists" | { (array: [Any]) in
