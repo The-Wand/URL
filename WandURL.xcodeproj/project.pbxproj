@@ -75,6 +75,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		6128FA422D835A25008D5BFA /* NOTICE.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = NOTICE.txt; sourceTree = "<group>"; };
 		613966152BE0F4EF004C18A3 /* watchPlay.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = watchPlay.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		613966482BE0F87A004C18A3 /* watchPlayTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = watchPlayTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		615158E82BF761DC001646EA /* info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = info.plist; sourceTree = "<group>"; };
@@ -292,6 +293,7 @@
 				618F8ED22BE9FDCE00618E7C /* Tests */,
 				615159052BF76666001646EA /* CONTRIB.TXT */,
 				OBJ_141 /* LICENSE */,
+				6128FA422D835A25008D5BFA /* NOTICE.txt */,
 				OBJ_142 /* README.md */,
 				613F9E502C0862EA0014534F /* Frameworks */,
 			);
