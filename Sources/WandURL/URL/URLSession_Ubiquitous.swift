@@ -21,6 +21,31 @@
 #if canImport(Foundation)
 import Foundation.NSURLSession
 import Wand
+//
+///// Access
+/////
+///// let session: URLSession = config|
+/////
+//@available(visionOS, unavailable)
+//extension URLSession: Ubiquitous {
+//
+//    	@inline(__always)
+//    	static
+//    	func access() -> Self {
+//
+//        	let session: Self
+//
+//        	if let config: URLSessionConfiguration = wand?.get() {
+//            	session = Self(configuration: config)
+//        	} else {
+//        	    session = Self.shared as! Self
+//        	}
+//
+//        	return session
+//    	}
+//
+//}
+//
 
 /// Obtain
 ///
@@ -30,7 +55,7 @@ import Wand
 extension URLSession: Obtain {
 
     @inline(__always)
-    public 
+    public
     static
     func obtain(by wand: Wand?) -> Self {
 
