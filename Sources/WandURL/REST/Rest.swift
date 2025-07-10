@@ -29,9 +29,6 @@ struct Rest {
     public
     typealias Model = Rest_Model
 
-//    public
-//    typealias Paged = Rest_ModelPaged
-
     public
     enum Method: String {
         

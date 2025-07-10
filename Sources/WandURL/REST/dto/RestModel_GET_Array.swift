@@ -129,24 +129,6 @@ extension Ask {//} where T == [any Rest.Model] {
         .init(once: true, handler: handler)
     }
 
-    @inline(__always)
-    static
-    func post(handler: @escaping (T)->() ) -> Post {
-        .init(once: true, handler: handler)
-    }
-
-    @inline(__always)
-    static
-    func put(handler: @escaping (T)->() ) -> Put {
-        .init(once: true, handler: handler)
-    }
-
-    @inline(__always)
-    static
-    func delete(handler: @escaping (T)->() ) -> Delete {
-        .init(once: true, handler: handler)
-    }
-
 }
 
 #endif

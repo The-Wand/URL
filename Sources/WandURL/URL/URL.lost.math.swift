@@ -19,30 +19,54 @@
 #if canImport(Foundation)
 import Foundation.NSURL
 
-@available(iOS 16, macOS 13, tvOS 16, watchOS 9.0, *)
+
 @inline(__always)
 public
+func + (url: URL, item: (name: String, value: String) ) -> URL {
+    url + item|
+}
+
+@inlinable
+public
 func + (url: URL, q: URLQueryItem) -> URL {
-    url.appending(queryItems: [q])
+    if #available(macOS 13.0, iOS 16.0, tvOS 16.0, watchOS 9.0, *) {
+        return url.appending(queryItems: [q])
+    } else {
+        var components = URLComponents(url: url, resolvingAgainstBaseURL: false)!
+        
+        var items = components.queryItems ?? []
+        items.append(q)
+        components.queryItems = items
+        
+        return components.url!
+    }
 }
 
-@available(iOS 16, macOS 13, tvOS 16, watchOS 9.0, *) //TODO: Removvvee C-P
-func + (path: String, items: [String: Any?]) -> String? {
-
-    let url = URL(string: path)
-
-    return url?.appending(queryItems: items.map {
-        URLQueryItem(name: $0.key, value: String(describing: $0.value))
-    }).absoluteString
-
+@inline(__always)
+public
+func + (path: String, items: [String: String]) -> String {
+    (URL(string: path)! + items).absoluteString
 }
 
-@available(iOS 16, macOS 13, tvOS 16, watchOS 9.0, *)
-func + (url: URL, items: [String: Any?]) -> URL {
+@inlinable
+public
+func + (url: URL, items: [String: String]) -> URL {
 
-    url.appending(queryItems: items.map {
+    let queryItems = items.map {
         URLQueryItem(name: $0.key, value: String(describing: $0.value))
-    })
+    }
+    
+    if #available(iOS 16.0, *) {
+        return url.appending(queryItems: queryItems)
+    } else {
+        var components = URLComponents(url: url, resolvingAgainstBaseURL: false)!
+        
+        var items = components.queryItems ?? []
+        items.append(contentsOf: queryItems)
+        components.queryItems = items
+        
+        return components.url!
+    }
 
 }
 

@@ -17,11 +17,17 @@
 /// El Machine 🤖
 
 import Any_
+import Wand
+import WandURL
 
-public 
+public
 extension GitHubAPI {
 
     struct Repo: Codable {
+        
+        public
+        static
+        var nextPage: String?
 
         let id: Int
 

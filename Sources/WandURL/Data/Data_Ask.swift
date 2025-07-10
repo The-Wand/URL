@@ -46,7 +46,7 @@ extension Data: Asking, Wanded {
         //Request for a first time
 
         //Make request
-        let task: URLSessionDataTask = wand.obtain()
+        let task = URLSessionDataTask.obtain(by: wand)
         task.resume()
     }
 

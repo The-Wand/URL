@@ -66,3 +66,18 @@ func |(id: Int,
 
     return wand | head
 }
+
+@discardableResult
+@inline(__always)
+func |(query: (org: String, limit: Int),
+       get: Ask<[GitHubAPI.Repo]>.Get) -> Wand {
+
+    let wand: Wand = nil
+
+    let path = "https://api.github.com/orgs/\(query.org)/repos"
+    wand.store(path, key: "base")
+    
+    wand.store(query.limit)
+
+    return wand | get
+}

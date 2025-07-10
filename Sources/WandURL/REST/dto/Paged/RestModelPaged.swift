@@ -22,40 +22,49 @@
 import Foundation
 import Wand
 
+public
+extension Ask {
+    
+    @inline(__always)
+    static
+    func next(handler: @escaping (T)->() ) -> Next {
+        .init(once: true, handler: handler)
+    }
+    
+}
+
 @available(visionOS, unavailable)
 public
 protocol Rest_ModelPaged: Rest.Model {
 
     static
-    var nextPage: String {get}
-
+    var limit: Int {get}
+    
+    static
+    var limitKey: String {get}
+    
 }
 
-/// Ask
-///
-/// wand | .get { (models: [T]) in
-///
-/// }
-///
-/// wand | .next { (models: [T]) in
-///
-/// }
-///
-@available(visionOS, unavailable)
-@inline(__always)
-@discardableResult
 public
-func |<T: Rest_ModelPaged> (wand: Wand, next: Ask<T>.Next) -> Wand {
-
-    wand.store(T.nextPage)
-
-    _ = wand.answer(the: next)
-    return wand | .one { (data: Data) in
-
-        let model: T = wand.get()!
-        wand.add(model)
-
+extension Rest_ModelPaged {
+    
+    static
+    var limit: Int {
+        20
     }
+    
+    static
+    var limitKey: String {
+        "limit"
+    }
+    
+}
+
+extension Rest {
+    
+    public
+    typealias Paged = Rest_ModelPaged
+    
 }
 
 #endif

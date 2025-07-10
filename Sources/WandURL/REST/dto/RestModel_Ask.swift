@@ -43,21 +43,21 @@ extension Ask { // where T: Rest.Model { where T: CloudKit.Model {
     class Delete: Ask {
     }
 
-    class Next: Ask {
+    class Next: Get {
     }
 
 }
 
 @available(visionOS, unavailable)
 public
-extension Ask where T: Rest.Model {
+extension Ask {
 
 
-    @inline(__always)
-    static
-    func get(handler: @escaping (T)->() ) -> Get {
-        .init(once: true, handler: handler)
-    }
+//    @inline(__always)
+//    static
+//    func get(handler: @escaping (T)->() ) -> Get {
+//        .init(once: true, handler: handler)
+//    }
 
     @inline(__always)
     static
@@ -86,12 +86,6 @@ extension Ask where T: Rest.Model {
     @inline(__always)
     static
     func delete(handler: @escaping (T)->() ) -> Delete {
-        .init(once: true, handler: handler)
-    }
-
-    @inline(__always)
-    static
-    func next(handler: @escaping (T)->() ) -> Next {
         .init(once: true, handler: handler)
     }
 

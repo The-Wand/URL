@@ -37,11 +37,13 @@ extension URLSessionDataTask: Obtain {
         let wand = wand ?? Wand()
 
         let session: URLSession = wand.obtain()
-        let request: URLRequest = wand.obtain()
+        let request = URLRequest.obtain(by: wand)
 
 //        let ask = wand.asking["Data"]?.last as? Ask<Data>
 
         let task = session.dataTask(with: request) { data, response, error in
+            
+            print(request)
             
             if let error = error {
                 wand.add(error)

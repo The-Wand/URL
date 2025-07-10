@@ -102,4 +102,15 @@ func |(url: URL?) -> Data? {
     return url|
 }
 
+/// Convert
+///
+/// let data: Data? = url|
+///
+@inline(__always)
+postfix
+public
+func |(item: (name: String, value: String?) ) -> URLQueryItem {
+    URLQueryItem(name: item.name, value: item.value)
+}
+
 #endif
