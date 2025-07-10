@@ -75,15 +75,15 @@ func |<T: Rest.PagedOffset> (wand: Wand, get: Ask<[T]>.Get) -> Wand {
     let offsetKey   = T.offsetKey
     let offset: Int = wand.get(for: offsetKey) ?? 1
     
-    let path: String = (wand.get(for: "base") ?? T.path) + [limitKey: "\(limit)",
-                                                           offsetKey: "\(offset)"]
+    let url: URL = (wand.get(for: "base") ?? T.path|) + [limitKey: "\(limit)",
+                                                        offsetKey: "\(offset)"]
     
     if offset == -1 {
-        wand.add(Wand.Error.HTTP("Request is out of bounds: \(path)"))
+        wand.add(Wand.Error.HTTP("Request is out of bounds: \(url)"))
         return wand
     }
     
-    wand.store(path)
+    wand.store(url)
     wand.addDefault(T.headers)
 
     _ = wand.answer(the: get)
@@ -91,24 +91,24 @@ func |<T: Rest.PagedOffset> (wand: Wand, get: Ask<[T]>.Get) -> Wand {
     return wand | .one { (data: Data) in
         
         do  {
-                print(path)
-                
-                let reply = try JSONDecoder().decode([T].self, from: data)
-                let _: Data? = wand.extract()
+            print(url)
             
-                let newOffset = if reply.count < limit {
-                    -1
-                } else {
-                    offset + 1
-                }
-                wand.store(newOffset, key: offsetKey)
-                
-                wand.add(reply)
+            let reply = try JSONDecoder().decode([T].self, from: data)
+            let _: Data? = wand.extract()
+        
+            let newOffset = if reply.count < limit {
+                -1
+            } else {
+                offset + 1
             }
-            catch(let e)
-            {
-                wand.add(e)
-            }
+            wand.store(newOffset, key: offsetKey)
+            
+            wand.add(reply)
+        }
+        catch(let e)
+        {
+            wand.add(e)
+        }
 
     }
 }
@@ -130,41 +130,5 @@ public
 func |<T: Rest.PagedOffset> (wand: Wand, next: Ask<[T]>.Next) -> Wand {
     wand | (next as Ask<[T]>.Get)
 }
-
-///// Ask Paged with offset
-/////
-///// wand | .get { (models: [T]) in
-/////
-///// }
-/////
-///// wand | .next { (models: [T]) in
-/////
-///// }
-/////
-//@available(visionOS, unavailable)
-//@inline(__always)
-//@discardableResult
-//public
-//func |<T: Rest.PagedOffset> (wand: Wand, next: Ask<T>.Next) -> Wand {
-//
-//    
-//    var url = URL(string: T.path)
-//    url + [
-//        "offset": wand.get() as? Int
-//    ]
-//    
-//    
-//    appending(queryItems: [URLQueryItem])
-//    
-//    wand.store(T.nextPage)
-//
-//    _ = wand.answer(the: next)
-//    return wand | .one { (data: Data) in
-//
-//        let model: T = wand.get()!
-//        wand.add(model)
-//
-//    }
-//}
 
 #endif

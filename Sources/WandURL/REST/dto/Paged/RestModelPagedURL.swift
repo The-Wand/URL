@@ -24,7 +24,7 @@ import Wand
 
 @available(visionOS, unavailable)
 public
-protocol Rest_ModelPagedNext: Rest.Paged {
+protocol Rest_ModelPagedURL: Rest.Paged {
 
     static
     var nextPage: String? {get set}
@@ -34,7 +34,7 @@ protocol Rest_ModelPagedNext: Rest.Paged {
 extension Rest {
     
     public
-    typealias PagedNext = Rest_ModelPagedNext
+    typealias PagedURL = Rest_ModelPagedURL
     
 }
 
@@ -43,7 +43,7 @@ extension Rest {
 @inline(__always)
 prefix
 public
-func |<T: Rest.PagedNext> (get: Ask<[T]>.Get) -> Wand {
+func |<T: Rest.PagedURL> (get: Ask<[T]>.Get) -> Wand {
     nil | get
 }
 
@@ -57,36 +57,42 @@ func |<T: Rest.PagedNext> (get: Ask<[T]>.Get) -> Wand {
 @inline(__always)
 @discardableResult
 public
-func |<T: Rest.PagedNext> (wand: Wand, get: Ask<[T]>.Get) -> Wand {
+func |<T: Rest.PagedURL> (wand: Wand, get: Ask<[T]>.Get) -> Wand {
     
     let limit: Int  = wand.get() ?? T.limit
     let limitKey    = T.limitKey
     
-    let url: URL = T.path| + (limitKey, "\(limit)")
-    
-    wand.addDefault(url)
+//    let path: String = (wand.get(for: "base") ?? T.path) + (limitKey, "\(limit)")
+//    
+//    if offset == -1 {
+//        wand.add(Wand.Error.HTTP("Request is out of bounds: \(path)"))
+//        return wand
+//    }
+//    
+//    wand.store(path)
     wand.addDefault(T.headers)
 
     _ = wand.answer(the: get)
 
     return wand | .one { (data: Data) in
         
-        do  { if
-                let method: Rest.Method = wand.get(),
-                method != .GET,
-                let object: T = wand.get()
-            {
-                wand.add(object)
-            }
-            else
-            {
-                let reply = try JSONDecoder().decode([T].self, from: data)
-                wand.add(reply)
-            }}
-            catch(let e)
-            {
-                wand.add(e)
-            }
+        do  {
+            let reply = try JSONDecoder().decode([T].self, from: data)
+            let _: Data? = wand.extract()
+        
+//            let newOffset = if reply.count < limit {
+//                -1
+//            } else {
+//                offset + 1
+//            }
+//            wand.store(newOffset, key: offsetKey)
+            
+            wand.add(reply)
+        }
+        catch(let e)
+        {
+            wand.add(e)
+        }
 
     }
 }
@@ -105,53 +111,8 @@ func |<T: Rest.PagedNext> (wand: Wand, get: Ask<[T]>.Get) -> Wand {
 @inline(__always)
 @discardableResult
 public
-func |<T: Rest.PagedNext> (wand: Wand, next: Ask<[T]>.Next) -> Wand {
-
-    wand.store(T.nextPage)
-
-    _ = wand.answer(the: next)
-    return wand | .one { (data: Data) in
-
-        let model: T = wand.get()!
-        wand.add(model)
-
-    }
+func |<T: Rest.PagedURL> (wand: Wand, next: Ask<[T]>.Next) -> Wand {
+    wand | (next as Ask<[T]>.Get)
 }
-
-///// Ask Paged with offset
-/////
-///// wand | .get { (models: [T]) in
-/////
-///// }
-/////
-///// wand | .next { (models: [T]) in
-/////
-///// }
-/////
-//@available(visionOS, unavailable)
-//@inline(__always)
-//@discardableResult
-//public
-//func |<T: Rest.PagedOffset> (wand: Wand, next: Ask<T>.Next) -> Wand {
-//
-//    
-//    var url = URL(string: T.path)
-//    url + [
-//        "offset": wand.get() as? Int
-//    ]
-//    
-//    
-//    appending(queryItems: [URLQueryItem])
-//    
-//    wand.store(T.nextPage)
-//
-//    _ = wand.answer(the: next)
-//    return wand | .one { (data: Data) in
-//
-//        let model: T = wand.get()!
-//        wand.add(model)
-//
-//    }
-//}
 
 #endif

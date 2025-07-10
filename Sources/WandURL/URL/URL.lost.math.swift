@@ -22,7 +22,7 @@ import Foundation.NSURL
 
 @inline(__always)
 public
-func + (url: URL, item: (name: String, value: String) ) -> URL {
+func + (url: URL, item: (String, String) ) -> URL {
     url + item|
 }
 
@@ -40,12 +40,6 @@ func + (url: URL, q: URLQueryItem) -> URL {
         
         return components.url!
     }
-}
-
-@inline(__always)
-public
-func + (path: String, items: [String: String]) -> String {
-    (URL(string: path)! + items).absoluteString
 }
 
 @inlinable
