@@ -36,8 +36,12 @@ extension Rest_Model {
 
         _ = wand.answer(the: ask)
 
-        wand | .one() { (data: Data) in
+        wand | .one { [weak wand] (data: Data) in
 
+            guard let wand else {
+                return
+            }
+            
              do { if
                     let method: Rest.Method = wand.get(),
                     method != .GET,
@@ -48,7 +52,11 @@ extension Rest_Model {
                 else
                 {
                     let D = (T.self as! Decodable.Type).self
-                    let reply = try JSONDecoder().decode(D, from: data)
+                    
+                    let decoder = wand.get() ?? JSONDecoder()
+                    decoder.keyDecodingStrategy = wand.get() ?? .useDefaultKeys
+                    
+                    let reply = try decoder.decode(D, from: data)
 
                     wand.add(reply as! T)
                 }}
