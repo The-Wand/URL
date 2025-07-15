@@ -22,28 +22,38 @@
 import Foundation
 import Wand
 
-public
 extension Ask { // where T: Rest.Model { where T: CloudKit.Model {
 
+    open
     class Get: Ask {
     }
 
+    open
     class Post: Ask {
     }
 
+    open
     class Put: Ask {
     }
 
+    open
     class Head: Ask {
     }
 
+    open
     class Patch: Ask {
     }
 
+    open
     class Delete: Ask {
     }
 
-    class Next: Get {
+    open
+    class Next: Page {
+    }
+    
+    open
+    class Page: Get {
     }
 
 }
@@ -51,13 +61,6 @@ extension Ask { // where T: Rest.Model { where T: CloudKit.Model {
 @available(visionOS, unavailable)
 public
 extension Ask {
-
-
-//    @inline(__always)
-//    static
-//    func get(handler: @escaping (T)->() ) -> Get {
-//        .init(once: true, handler: handler)
-//    }
 
     @inline(__always)
     static
@@ -82,10 +85,22 @@ extension Ask {
     func patch(handler: @escaping (T)->() ) -> Patch {
         .init(once: true, handler: handler)
     }
-
+    
     @inline(__always)
     static
     func delete(handler: @escaping (T)->() ) -> Delete {
+        .init(once: true, handler: handler)
+    }
+    
+    @inline(__always)
+    static
+    func next(handler: @escaping (T)->(Bool) ) -> Next {
+        .init(once: true, handler: handler)
+    }
+    
+    @inline(__always)
+    static
+    func page(handler: @escaping (T)->() ) -> Page {
         .init(once: true, handler: handler)
     }
 

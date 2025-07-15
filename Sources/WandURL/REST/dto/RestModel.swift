@@ -26,7 +26,6 @@ import Wand
 public
 protocol Rest_Model: Asking, Wanded, Codable {
 
-    
     static
     var base: String? {get}
 
