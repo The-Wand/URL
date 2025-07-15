@@ -38,12 +38,12 @@ extension GitHubAPI.Repo: GitHubAPI.Model {
 @discardableResult
 @inline(__always)
 func |(id: Int,
-       get: Ask<GitHubAPI.Repo>.Get) -> Wand {
+       get: Ask<GitHubAPI.Repo>.Get) -> Core {
 
-    let wand: Wand = nil
+    let wand: Core = nil
 
     let path = GitHubAPI.Repo.path + "/\(id)"
-    wand.store(path)
+    wand.put(path)
 
     return wand | get
 }
@@ -57,12 +57,12 @@ func |(id: Int,
 @discardableResult
 @inline(__always)
 func |(id: Int,
-       head: Ask<GitHubAPI.Repo>.Head) -> Wand {
+       head: Ask<GitHubAPI.Repo>.Head) -> Core {
 
-    let wand: Wand = nil
+    let wand: Core = nil
 
     let path = GitHubAPI.Repo.path + "/\(id)"
-    wand.store(path)
+    wand.put(path)
 
     return wand | head
 }
@@ -70,14 +70,14 @@ func |(id: Int,
 @discardableResult
 @inline(__always)
 func |(query: (org: String, limit: Int),
-       get: Ask<[GitHubAPI.Repo]>.Get) -> Wand {
+       get: Ask<[GitHubAPI.Repo]>.Get) -> Core {
 
-    let wand: Wand = nil
+    let wand: Core = nil
 
     let path = "https://api.github.com/orgs/\(query.org)/repos"
-    wand.store(path, key: "base")
+    wand.put(path, for: "base")
     
-    wand.store(query.limit)
+    wand.put(query.limit)
 
     return wand | get
 }

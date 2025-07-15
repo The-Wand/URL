@@ -28,15 +28,17 @@ extension Rest_Model {
     @inline(__always)
     public
     static
-    func wand<T>(_ wand: Wand, asks ask: Ask<T>) {
+    func ask<C, T>(with context: C, ask: Wand.Ask<T>) -> Wand.Core {
 
+        let wand = Wand.Core.to(context)
+        
         let M = T.self as! Rest.Model.Type
-        wand.addDefault(M.path)
-        wand.addDefault(M.headers)
+        wand.putDefault(M.path)
+        wand.putDefault(M.headers)
 
-        _ = wand.answer(the: ask)
+        _ = wand.append(ask: ask)
 
-        wand | .one() { (data: Data) in
+        return wand | .one() { (data: Data) in
 
              do { if
                     let method: Rest.Method = wand.get(),

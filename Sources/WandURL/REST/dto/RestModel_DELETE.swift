@@ -24,7 +24,7 @@ import Wand
 
 /// Ask
 ///
-/// dto | .post { (done: DTO) in
+/// wand | .delete { (done: T) in
 ///
 /// }
 ///
@@ -32,31 +32,13 @@ import Wand
 @inline(__always)
 @discardableResult
 public 
-func |<T: Rest.Model> (dto: T, post: Ask<T>.Post) -> Core {
-
-    let wand = dto.wand
-    wand.put(dto| as Data)
-
-    return wand | post
-}
-
-/// Ask
-///
-/// wand | .post { (done: T) in
-///
-/// }
-///
-@available(visionOS, unavailable)
-@inline(__always)
-@discardableResult
-public 
-func |<T: Rest.Model> (wand: Core, post: Ask<T>.Post) -> Core {
+func |<T: Rest.Model> (wand: Core, delete: Ask<T>.Delete) -> Core {
 
     wand.putDefault(T.path)
     wand.putDefault(T.headers)
-    wand.putDefault(Rest.Method.POST)
+    wand.putDefault(Rest.Method.DELETE)
 
-    _ = wand.append(ask: post)
+    _ = wand.append(ask: delete)
     return wand | .one { (data: Data) in
 
         let model: T = wand.get()!

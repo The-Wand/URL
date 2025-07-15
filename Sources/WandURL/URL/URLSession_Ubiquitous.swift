@@ -52,12 +52,12 @@ import Wand
 /// let session: URLSession = config|
 ///
 @available(visionOS, unavailable)
-extension URLSession: Obtain {
+extension URLSession: Obtainable {
 
     @inline(__always)
     public
     static
-    func obtain(by wand: Wand?) -> Self {
+    func obtain(by wand: Core?) -> Self {
 
         let session: Self
 

@@ -32,10 +32,10 @@ import Wand
 @inline(__always)
 @discardableResult
 public 
-func |<T: Rest.Model> (dto: T, put: Ask<T>.Put) -> Wand {
+func |<T: Rest.Model> (dto: T, put: Ask<T>.Put) -> Core {
 
     let wand = dto.wand
-    wand.store(dto| as Data)
+    wand.put(dto| as Data)
 
     return wand | put
 }
@@ -50,13 +50,13 @@ func |<T: Rest.Model> (dto: T, put: Ask<T>.Put) -> Wand {
 @inline(__always)
 @discardableResult
 public 
-func |<T: Rest.Model> (wand: Wand, put: Ask<T>.Put) -> Wand {
+func |<T: Rest.Model> (wand: Core, put: Ask<T>.Put) -> Core {
 
-    wand.addDefault(T.path)
-    wand.addDefault(T.headers)
-    wand.addDefault(Rest.Method.PUT)
+    wand.putDefault(T.path)
+    wand.putDefault(T.headers)
+    wand.putDefault(Rest.Method.PUT)
 
-    _ = wand.answer(the: put)
+    _ = wand.append(ask: put)
     return wand | .one { (data: Data) in
 
         let model: T = wand.get()!

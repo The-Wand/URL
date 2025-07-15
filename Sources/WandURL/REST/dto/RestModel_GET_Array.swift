@@ -33,12 +33,12 @@ import Wand
 @inline(__always)
 @discardableResult
 public
-func |<T: Rest.Model> (wand: Wand, get: Ask<[T]>.Get) -> Wand {
+func |<T: Rest.Model> (wand: Core, get: Ask<[T]>.Get) -> Core {
 
-    wand.addDefault(T.path)
-    wand.addDefault(T.headers)
+    wand.putDefault(T.path)
+    wand.putDefault(T.headers)
 
-    _ = wand.answer(the: get)
+    _ = wand.append(ask: get)
 
     return wand | .one { (data: Data) in
         
@@ -73,7 +73,7 @@ func |<T: Rest.Model> (wand: Wand, get: Ask<[T]>.Get) -> Wand {
 @inline(__always)
 prefix
 public
-func |<T: Rest.Model> (handler: @escaping ([T])->() ) -> Wand {
+func |<T: Rest.Model> (handler: @escaping ([T])->() ) -> Core {
     nil | .get(handler: handler)
 }
 
@@ -88,7 +88,7 @@ func |<T: Rest.Model> (handler: @escaping ([T])->() ) -> Wand {
 @inline(__always)
 prefix
 public
-func |<T: Rest.Model> (get: Ask<[T]>.Get) -> Wand {
+func |<T: Rest.Model> (get: Ask<[T]>.Get) -> Core {
     nil | get
 }
 
@@ -102,8 +102,8 @@ func |<T: Rest.Model> (get: Ask<[T]>.Get) -> Wand {
 @discardableResult
 @inline(__always)
 public
-func |<C, T: Rest.Model> (context: C?, handler: @escaping ([T])->() ) -> Wand {
-    Wand.to(context) | .get(handler: handler)
+func |<C, T: Rest.Model> (context: C?, handler: @escaping ([T])->() ) -> Core {
+    Core.to(context) | .get(handler: handler)
 }
 
 /// Ask
@@ -116,8 +116,8 @@ func |<C, T: Rest.Model> (context: C?, handler: @escaping ([T])->() ) -> Wand {
 @inline(__always)
 @discardableResult
 public 
-func |<C, T: Rest.Model> (context: C?, get: Ask<[T]>.Get) -> Wand {
-    Wand.to(context) | get
+func |<C, T: Rest.Model> (context: C?, get: Ask<[T]>.Get) -> Core {
+    Core.to(context) | get
 }
 
 public

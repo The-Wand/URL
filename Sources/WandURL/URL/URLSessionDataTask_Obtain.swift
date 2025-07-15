@@ -27,16 +27,16 @@ import Wand
 /// let task: URLSessionDataTask = request|
 ///
 @available(visionOS, unavailable)
-extension URLSessionDataTask: Obtain {
+extension URLSessionDataTask: Obtainable {
 
     @inline(__always)
     public 
     static 
-    func obtain(by wand: Wand?) -> Self {
+    func obtain(by wand: Core?) -> Self {
 
-        let wand = wand ?? Wand()
+        let wand = wand ?? Core()
 
-        let session: URLSession = wand.obtain()
+        let session: URLSession = wand.get()
         let request = URLRequest.obtain(by: wand)
 
 //        let ask = wand.asking["Data"]?.last as? Ask<Data>
@@ -51,24 +51,24 @@ extension URLSessionDataTask: Obtain {
             }
 
             guard let httpResponse = response as? HTTPURLResponse else {
-                wand.add(Wand.Error.HTTP("Not http?"))
+                wand.add(Core.Error.HTTP("Not http?"))
                 return
             }
 
             let statusCode = httpResponse.statusCode
             if !(200...299).contains(httpResponse.statusCode)  {
-                wand.add(Wand.Error.HTTP("Code: \(statusCode)"))
+                wand.add(Core.Error.HTTP("Code: \(statusCode)"))
                 return
             }
 
             let mime = httpResponse.mimeType
             if mime != "application/json" {
-                wand.add(Wand.Error.HTTP("Mime: \(mime ?? "")"))
+                wand.add(Core.Error.HTTP("Mime: \(mime ?? "")"))
                 return
             }
 
             guard let data = data else {
-                wand.add(Wand.Error.HTTP("No data"))
+                wand.add(Core.Error.HTTP("No data"))
                 return
             }
 
@@ -83,7 +83,7 @@ extension URLSessionDataTask: Obtain {
 
 }
 
-extension Wand.Error {
+extension Core.Error {
 
     static func HTTP(_ reason: String) -> Error {
         Self(reason: reason)

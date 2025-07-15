@@ -53,7 +53,7 @@ extension Rest {
 @inline(__always)
 prefix
 public
-func |<T: Rest.PagedOffset> (get: Ask<[T]>.Get) -> Wand {
+func |<T: Rest.PagedOffset> (get: Ask<[T]>.Get) -> Core {
     nil | get
 }
 
@@ -67,7 +67,7 @@ func |<T: Rest.PagedOffset> (get: Ask<[T]>.Get) -> Wand {
 @inline(__always)
 @discardableResult
 public
-func |<T: Rest.PagedOffset> (wand: Wand, get: Ask<[T]>.Get) -> Wand {
+func |<T: Rest.PagedOffset> (wand: Core, get: Ask<[T]>.Get) -> Core {
     
     let limit: Int  = wand.get() ?? T.limit
     let limitKey    = T.limitKey
@@ -79,14 +79,14 @@ func |<T: Rest.PagedOffset> (wand: Wand, get: Ask<[T]>.Get) -> Wand {
                                                         offsetKey: "\(offset)"]
     
     if offset == -1 {
-        wand.add(Wand.Error.HTTP("Request is out of bounds: \(url)"))
+        wand.add(Core.Error.HTTP("Request is out of bounds: \(url)"))
         return wand
     }
     
-    wand.store(url)
-    wand.addDefault(T.headers)
+    wand.put(url)
+    wand.putDefault(T.headers)
 
-    _ = wand.answer(the: get)
+    _ = wand.append(ask: get)
 
     return wand | .one { (data: Data) in
         
@@ -101,7 +101,7 @@ func |<T: Rest.PagedOffset> (wand: Wand, get: Ask<[T]>.Get) -> Wand {
             } else {
                 offset + 1
             }
-            wand.store(newOffset, key: offsetKey)
+            wand.put(newOffset, for: offsetKey)
             
             wand.add(reply)
         }
@@ -127,7 +127,7 @@ func |<T: Rest.PagedOffset> (wand: Wand, get: Ask<[T]>.Get) -> Wand {
 @inline(__always)
 @discardableResult
 public
-func |<T: Rest.PagedOffset> (wand: Wand, next: Ask<[T]>.Next) -> Wand {
+func |<T: Rest.PagedOffset> (wand: Core, next: Ask<[T]>.Next) -> Core {
     wand | (next as Ask<[T]>.Get)
 }
 

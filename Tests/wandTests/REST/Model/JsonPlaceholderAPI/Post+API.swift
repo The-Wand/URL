@@ -39,15 +39,15 @@ extension TypicodeAPI.Post: TypicodeAPI.Model {
     @inline(__always)
     static
     func |(model: Self,
-           put: Ask<Self>.Put) -> Wand {
+           put: Ask<Self>.Put) -> Core {
 
         let wand = model.wand
 
         let path = Self.path + "/\(model.id)"
-        wand.store(path)
+        wand.put(path)
 
         let body: Data = model|
-        wand.store(body)
+        wand.put(body)
 
         return wand | put
     }
@@ -63,12 +63,12 @@ extension TypicodeAPI.Post: TypicodeAPI.Model {
 @discardableResult
 @inline(__always)
 func |(id: Int,
-       get: Ask<TypicodeAPI.Post>.Get) -> Wand {
+       get: Ask<TypicodeAPI.Post>.Get) -> Core {
 
-    let wand: Wand = nil
+    let wand: Core = nil
 
     let path = TypicodeAPI.Post.path + "/\(id)"
-    wand.store(path)
+    wand.put(path)
 
     return wand | get
 }
@@ -82,12 +82,12 @@ func |(id: Int,
 @discardableResult
 @inline(__always)
 func |(id: Int,
-       delete: Ask<TypicodeAPI.Post>.Delete) -> Wand {
+       delete: Ask<TypicodeAPI.Post>.Delete) -> Core {
 
-    let wand: Wand = nil
+    let wand: Core = nil
 
     let path = TypicodeAPI.Post.path + "/\(id)"
-    wand.store(path)
+    wand.put(path)
 
     return wand | delete
 }

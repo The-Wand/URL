@@ -40,15 +40,15 @@ extension GitHubAPI {
 
 }
 
-extension GitHubAPI.Repo: Any_ {
-
-    public 
-    static 
-    var any: Self {
-        Self(id: .any,
-             name: .any,
-             description: .any,
-             watchers: .any)
-    }
-
-}
+//extension GitHubAPI.Repo: Any_ {
+//
+//    public 
+//    static 
+//    var any: Self {
+////        GitHubAPI.Repo(id: .any,
+////             name: .any,
+////             description: .any,
+////             watchers: nil)
+//    }
+//
+//}

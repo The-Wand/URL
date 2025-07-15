@@ -32,7 +32,7 @@ import Wand
 @discardableResult
 @inline(__always)
 public
-func | (path: String, handler: @escaping ([String: Any])->() ) -> Wand {
+func | (path: String, handler: @escaping ([String: Any])->() ) -> Core {
     URL(string: path)! | handler
 }
 
@@ -46,18 +46,18 @@ func | (path: String, handler: @escaping ([String: Any])->() ) -> Wand {
 @discardableResult
 @inline(__always)
 public
-func | (url: URL, handler: @escaping ([String: Any])->() ) -> Wand {
+func | (url: URL, handler: @escaping ([String: Any])->() ) -> Core {
 
-    let wand = Wand()
+    let wand = Core()
 
     //Save ask
-    _ = wand.answer(the: .one(handler: handler))
+    _ = wand.append(ask: .one(handler: handler))
 
     //Request for a first time
 
     //Prepare context
-    wand.store(url)
-    wand.store(JSON.defaultHeaders)
+    wand.put(url)
+    wand.put(JSON.defaultHeaders)
 
     //Perfom request
     url | .one { (data: Data) in

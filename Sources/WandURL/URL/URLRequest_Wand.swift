@@ -27,12 +27,12 @@ import Wand
 /// let request: URLRequest = nil|
 ///
 @available(visionOS, unavailable)
-extension URLRequest: Obtain {
+extension URLRequest: Obtainable {
 
     @inline(__always)
     public 
     static
-    func obtain(by wand: Wand?) -> Self {
+    func obtain(by wand: Core?) -> Self {
 
         guard let wand else {
             fatalError("No context")

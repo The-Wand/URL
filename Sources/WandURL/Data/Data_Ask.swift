@@ -33,14 +33,17 @@ extension Data: Asking, Wanded {
 
     @inline(__always)
     public
-    static func wand<T>(_ wand: Wand, asks ask: Ask<T>) {
+    static
+    func ask<C, T>(with context: C, ask: Ask<T>) -> Core {
 
 //        let request: URLRequest = wand.obtain()
 //        ask.key = request.hashValue|
 
+        let wand = Wand.Core.to(context)
+        
         //Save ask
-        guard wand.answer(the: ask) else {
-            return
+        guard wand.append(ask: ask) else {
+            return wand
         }
 
         //Request for a first time
@@ -48,6 +51,8 @@ extension Data: Asking, Wanded {
         //Make request
         let task = URLSessionDataTask.obtain(by: wand)
         task.resume()
+        
+        return wand
     }
 
 }

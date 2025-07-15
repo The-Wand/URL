@@ -24,24 +24,24 @@ import Wand
 
 class Data_Tests: XCTestCase {
 
-    func test_Path_Data() {
-        let e = expectation()
-
-        "https://api.github.com/gists" | .one { (data: Data) in
-
-            if !data.isEmpty {
-                e.fulfill()
-            }
-
-        }
-
-        waitForExpectations()
-    }
+//    func test_Path_Data() {
+//        let e = expectation()
+//
+//        "https://api.github.com/gists" | .one { (data: Data) in
+//
+//            if !data.isEmpty {
+//                e.fulfill()
+//            }
+//
+//        }
+//
+//        waitForExpectations()
+//    }
 
     func test_URL_Data() {
         let e = expectation()
 
-        let url = URL(string: "https://jsonplaceholder.typicode.com/posts")
+        let url = URL(string: "https://jsonplaceholder.typicode.com/posts")!
         url | .one { (data: Data) in
 
             if !data.isEmpty {

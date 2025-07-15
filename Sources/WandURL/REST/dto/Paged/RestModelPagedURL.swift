@@ -43,7 +43,7 @@ extension Rest {
 @inline(__always)
 prefix
 public
-func |<T: Rest.PagedURL> (get: Ask<[T]>.Get) -> Wand {
+func |<T: Rest.PagedURL> (get: Ask<[T]>.Get) -> Core {
     nil | get
 }
 
@@ -57,7 +57,7 @@ func |<T: Rest.PagedURL> (get: Ask<[T]>.Get) -> Wand {
 @inline(__always)
 @discardableResult
 public
-func |<T: Rest.PagedURL> (wand: Wand, get: Ask<[T]>.Get) -> Wand {
+func |<T: Rest.PagedURL> (wand: Core, get: Ask<[T]>.Get) -> Core {
     
     let limit: Int  = wand.get() ?? T.limit
     let limitKey    = T.limitKey
@@ -70,9 +70,9 @@ func |<T: Rest.PagedURL> (wand: Wand, get: Ask<[T]>.Get) -> Wand {
 //    }
 //    
 //    wand.store(path)
-    wand.addDefault(T.headers)
+    wand.putDefault(T.headers)
 
-    _ = wand.answer(the: get)
+    _ = wand.append(ask: get)
 
     return wand | .one { (data: Data) in
         
@@ -111,7 +111,7 @@ func |<T: Rest.PagedURL> (wand: Wand, get: Ask<[T]>.Get) -> Wand {
 @inline(__always)
 @discardableResult
 public
-func |<T: Rest.PagedURL> (wand: Wand, next: Ask<[T]>.Next) -> Wand {
+func |<T: Rest.PagedURL> (wand: Core, next: Ask<[T]>.Next) -> Core {
     wand | (next as Ask<[T]>.Get)
 }
 

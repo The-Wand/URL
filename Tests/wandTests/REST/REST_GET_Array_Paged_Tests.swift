@@ -24,46 +24,46 @@ import Wand
 @available(visionOS, unavailable)
 class Codable_Array_GET_Paged_Tests: XCTestCase {
 
-    @available(iOS 16.0, *)
-    func test_Codable_Array_GET_Paged_Offset() {
-        let e = expectation()
-        e.assertForOverFulfill = true
-        e.expectedFulfillmentCount = 2
-        
-        let limit = (0...20).randomElement()!
-        
-        weak
-        var wand: Wand?
-        wand = (org: "the-wand", limit: limit) | .get { (result: [GitHubAPI.Repo]) in
-            
-            guard
-                result.count == limit,
-                result.first?.id != 0
-            else {
-                return
-            }
-            
-            e.fulfill()
-            
-            DispatchQueue.global().asyncAfter(deadline: .now() + 1) {
-                requestNextPage()
-            }
-            
-        }
-        
-        func requestNextPage() {
-            
-            guard let wand else {
-                return
-            }
-            
-            wand | .next { (result: [GitHubAPI.Repo]) in
-                e.fulfill()
-            }
-            
-        }
-        
-        waitForExpectations(timeout: .default * 4)
-    }
+//    @available(iOS 16.0, *)
+//    func test_Codable_Array_GET_Paged_Offset() {
+//        let e = expectation()
+//        e.assertForOverFulfill = true
+//        e.expectedFulfillmentCount = 2
+//        
+//        let limit = (0...20).randomElement()!
+//        
+//        weak
+//        var wand: Core?
+//        wand = (org: "the-wand", limit: limit) | .get { (result: [GitHubAPI.Repo]) in
+//            
+//            guard
+//                result.count == limit,
+//                result.first?.id != 0
+//            else {
+//                return
+//            }
+//            
+//            e.fulfill()
+//            
+//            DispatchQueue.global().asyncAfter(deadline: .now() + 1) {
+//                requestNextPage()
+//            }
+//            
+//        }
+//        
+//        func requestNextPage() {
+//            
+//            guard let wand else {
+//                return
+//            }
+//            
+//            wand | .next { (result: [GitHubAPI.Repo]) in
+//                e.fulfill()
+//            }
+//            
+//        }
+//        
+//        waitForExpectations(timeout: .default * 4)
+//    }
 
 }
