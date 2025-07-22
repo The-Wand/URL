@@ -38,7 +38,7 @@ extension URLRequest: Obtainable {
             fatalError("No context")
         }
 
-        let url:     URL            = wand.get() ?? (wand.get()! as String)|
+        let url:     URL            = wand.get()!
         let method:  Rest.Method    = wand.get() ?? .GET
         let timeout: TimeInterval   = wand.get() ?? method.timeout
 

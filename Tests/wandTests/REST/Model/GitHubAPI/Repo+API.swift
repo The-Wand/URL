@@ -16,6 +16,8 @@
 /// Created by Alex Kozin
 /// El Machine 🤖
 
+import Foundation
+
 import WandURL
 import Wand
 
@@ -43,7 +45,7 @@ func |(id: Int,
     let wand: Core = nil
 
     let path = GitHubAPI.Repo.path + "/\(id)"
-    wand.put(path)
+    wand.put(path| as URL)
 
     return wand | get
 }

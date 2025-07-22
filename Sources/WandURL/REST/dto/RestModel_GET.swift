@@ -33,7 +33,7 @@ extension Rest_Model {
         let wand = Wand.Core.to(context)
         
         let M = T.self as! Rest.Model.Type
-        wand.putDefault(M.path)
+        wand.putDefault(M.path| as URL)
         wand.putDefault(M.headers)
 
         _ = wand.append(ask: ask)

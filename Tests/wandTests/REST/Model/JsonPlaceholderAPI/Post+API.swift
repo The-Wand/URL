@@ -44,7 +44,7 @@ extension TypicodeAPI.Post: TypicodeAPI.Model {
         let wand = model.wand
 
         let path = Self.path + "/\(model.id)"
-        wand.put(path)
+        wand.put(path| as URL)
 
         let body: Data = model|
         wand.put(body)

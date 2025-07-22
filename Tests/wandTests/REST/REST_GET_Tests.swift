@@ -44,12 +44,12 @@ class REST_GET_Tests: XCTestCase {
     }
 
     @available(iOS 16.0, *)
-    func test_Path_to_REST_Codable() {
+    func test_URL_to_REST_Codable() {
         let e = expectation()
 
         let id = 42
-        let path = "https://api.github.com/repositories/\(id)"
-        path | .get { (repo: GitHubAPI.Repo) in
+        let url: URL = "https://api.github.com/repositories/\(id)"|
+        url | .get { (repo: GitHubAPI.Repo) in
 
             if repo.id == id {
                 e.fulfill()

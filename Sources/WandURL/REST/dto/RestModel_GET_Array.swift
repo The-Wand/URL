@@ -35,7 +35,7 @@ import Wand
 public
 func |<T: Rest.Model> (wand: Core, get: Ask<[T]>.Get) -> Core {
 
-    wand.putDefault(T.path)
+    wand.putDefault(T.path| as URL)
     wand.putDefault(T.headers)
 
     _ = wand.append(ask: get)
