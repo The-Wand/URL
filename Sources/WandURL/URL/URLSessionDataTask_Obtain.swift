@@ -83,9 +83,12 @@ extension URLSessionDataTask: Obtainable {
 
 }
 
+public
 extension Core.Error {
 
-    static func HTTP(_ reason: String) -> Error {
+    public
+    static
+    func HTTP(_ reason: String) -> Error {
         Self(reason: reason)
     }
 
