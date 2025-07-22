@@ -16,25 +16,25 @@
 /// Created by Alex Kozin
 /// El Machine 🤖
 
-import WandURL
-import Wand
-
-
-extension GitHubAPI.Repo: Rest.PagedOffset {
-    
-    public
-    static
-    var offsetKey: String {
-        "page"
-    }
-    
-    public
-    static
-    var limitKey: String {
-        "per_page"
-    }
-    
-}
+//import WandURL
+//import Wand
+//
+//
+//extension GitHubAPI.Repo: Rest.PagedOffset {
+//    
+//    public
+//    static
+//    var offsetKey: String {
+//        "page"
+//    }
+//    
+//    public
+//    static
+//    var limitKey: String {
+//        "per_page"
+//    }
+//    
+//}
 
 ///// Get Model
 ///// 
