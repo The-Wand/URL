@@ -15,15 +15,15 @@
 ///
 /// Created by Alex Kozin
 /// El Machine 🤖
-
-import XCTest
-
-import WandURL
-import Wand
-
-@available(visionOS, unavailable)
-class Codable_Array_GET_Paged_Tests: XCTestCase {
-
+//
+//import XCTest
+//
+//import WandURL
+//import Wand
+//
+//@available(visionOS, unavailable)
+//class Codable_Array_GET_Paged_Tests: XCTestCase {
+//
 //    @available(iOS 16.0, *)
 //    func test_Codable_Array_GET_Paged_Offset() {
 //        let e = expectation()
@@ -65,5 +65,5 @@ class Codable_Array_GET_Paged_Tests: XCTestCase {
 //        
 //        waitForExpectations(timeout: .default * 4)
 //    }
-
-}
+//
+//}
