@@ -52,7 +52,7 @@ func |<T: Rest.Model> (dto: T, head: Ask<T>.Head) -> Core {
 public 
 func |<T: Rest.Model> (wand: Core, head: Ask<T>.Head) -> Core {
 
-    wand.putDefault(T.path)
+    wand.putDefault(T.path| as URL)
     wand.putDefault(T.headers)
     wand.putDefault(Rest.Method.HEAD)
 
