@@ -61,15 +61,18 @@ extension URLSessionDataTask: Obtainable {
                 return
             }
 
-            let mime = httpResponse.mimeType
-            if mime != "application/json" {
-                wand.add(Core.Error.HTTP("Mime: \(mime ?? "")"))
-                return
-            }
-
             guard let data = data else {
                 wand.add(Core.Error.HTTP("No data"))
                 return
+            }
+
+            if !data.isEmpty {
+                //BUG: mimeType == "text/plain" for empty "content-type"
+                let mime = httpResponse.mimeType
+                if mime != "application/json" {
+                    wand.add(Core.Error.HTTP("Mime: \(mime ?? "")"))
+                    return
+                }
             }
 
             wand.add(httpResponse)
