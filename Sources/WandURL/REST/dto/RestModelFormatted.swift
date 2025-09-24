@@ -34,11 +34,4 @@ func | <T: RestModelFormatted> (id: Int, get: Ask<T>.Get) -> Core {
     Core(String(format: T.path, id)| as URL) | get
 }
 
-//TODO:
-//extension Rest.Model {
-//
-//    typealias Formatted = RestModelFormatted
-//
-//}
-
 #endif
