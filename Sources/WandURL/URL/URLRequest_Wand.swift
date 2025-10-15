@@ -52,4 +52,14 @@ extension URLRequest: Obtainable {
 
 }
 
+/// Convert
+/// - Parameter path: Path
+/// - Returns: Request
+@inline(__always)
+postfix
+public
+func |(path: String) -> URLRequest {
+    URLRequest(url: path|)
+}
+
 #endif
