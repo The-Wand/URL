@@ -19,7 +19,9 @@
 /// 2020 El Machine
 
 #if canImport(Foundation)
+@_exported
 import Foundation.NSURLSession
+@_exported
 import Wand
 //
 ///// Access

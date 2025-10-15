@@ -19,7 +19,9 @@
 /// 2020 El Machine
 
 #if canImport(Foundation)
+@_exported
 import Foundation
+@_exported
 import Wand
 
 extension Ask { // where T: Rest.Model { where T: CloudKit.Model {

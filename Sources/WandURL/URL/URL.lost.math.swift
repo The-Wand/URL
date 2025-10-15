@@ -17,6 +17,7 @@
 ///
 
 #if canImport(Foundation)
+@_exported
 import Foundation.NSURL
 
 
