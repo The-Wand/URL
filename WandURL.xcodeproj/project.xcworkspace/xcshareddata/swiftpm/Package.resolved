@@ -15,8 +15,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/The-Wand/Wand.git",
       "state" : {
-        "revision" : "b0b855b18893fcff676e7dcac44a1900479f85d0",
-        "version" : "2.0.10"
+        "revision" : "dc59d75e9eeca7d5709da4c066e6beccc5007c9b",
+        "version" : "2.0.11"
       }
     }
   ],
