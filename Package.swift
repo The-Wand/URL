@@ -1,6 +1,6 @@
 // swift-tools-version: 5.6
 ///
-/// Copyright 2020 Alexander Kozin
+/// Copyright 2020 Aleksander Kozin
 ///
 /// Licensed under the Apache License, Version 2.0 (the "License");
 /// you may not use this file except in compliance with the License.
@@ -14,14 +14,13 @@
 /// See the License for the specific language governing permissions and
 /// limitations under the License.
 ///
-/// Created by Alex Kozin
+/// Created by Alek Kozin
 /// El Machine 🤖
 
 import PackageDescription
 
 let package = Package(
     name: "WandURL",
-    defaultLocalization: "ru",
 
     platforms: [
         .iOS(.v14),
@@ -35,8 +34,8 @@ let package = Package(
     ],
 
     dependencies: [
-        .package(url: "https://github.com/The-Wand/Any.git", .upToNextMajor(from: "1.0.1") ),
-        .package(url: "https://github.com/The-Wand/Wand.git", .upToNextMajor(from: "2.0.11") ),
+        .package(url: "https://github.com/The-Wand/Any.git", .upToNextMajor(from: "1.0.2") ),
+        .package(url: "https://github.com/The-Wand/Wand.git", .upToNextMajor(from: "2.0.12") ),
     ],
 
     targets: [
