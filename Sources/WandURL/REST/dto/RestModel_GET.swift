@@ -30,7 +30,7 @@ extension Rest_Model {
     @inline(__always)
     public
     static
-    func ask<C, T>(with context: C, ask: Wand.Ask<T>) -> Wand.Core {
+    func ask<C, T>(with context: C, ask: Ask<T>) -> Core {
 
         let wand = Wand.Core.to(context)
         
