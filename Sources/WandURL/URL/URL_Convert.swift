@@ -38,26 +38,26 @@ func |(string: String) -> URL {
 @inline(__always)
 postfix
 public
-func |(piped: String?) -> URL {
-    (piped!)|
+func |(string: String?) -> URL {
+    (string!)|
 }
 
 @inline(__always)
 postfix
 public
-func |(piped: String?) -> URL? {
-    guard let piped = piped else {
+func |(string: String?) -> URL? {
+    guard let string else {
         return nil
     }
 
-    return piped|
+    return string|
 }
 
 @inline(__always)
 postfix
 public
-func |(piped: String) -> URL? {
-    URL(string: piped)
+func |(string: String) -> URL? {
+    URL(string: string)
 }
 
 /// Convert
@@ -67,15 +67,15 @@ func |(piped: String) -> URL? {
 @inline(__always)
 postfix
 public
-func |(piped: URL) -> String {
-    piped.absoluteString
+func |(url: URL) -> String {
+    url.absoluteString
 }
 
 @inline(__always)
 postfix
 public
-func |(piped: URL?) -> String? {
-    piped?.absoluteString
+func |(url: URL?) -> String? {
+    url?.absoluteString
 }
 
 /// Convert

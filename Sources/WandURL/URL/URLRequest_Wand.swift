@@ -34,7 +34,7 @@ extension URLRequest: Obtainable {
     @inline(__always)
     public 
     static
-    func obtain(by wand: Core?) -> Self {
+    func obtain<C>(with scope: C?, by wand: Core?) -> Self {
 
         guard let wand else {
             fatalError("No context")

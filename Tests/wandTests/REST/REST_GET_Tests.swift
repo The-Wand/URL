@@ -55,7 +55,7 @@ class REST_GET_Tests: XCTestCase {
                 e.fulfill()
             }
 
-        } | { (e: Error) in
+        } |? { (e: Error) in
             print(e)
         }
 

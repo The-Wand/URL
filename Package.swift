@@ -34,8 +34,8 @@ let package = Package(
     ],
 
     dependencies: [
-        .package(url: "https://github.com/The-Wand/Any.git", .upToNextMajor(from: "1.0.3") ),
-        .package(url: "https://github.com/The-Wand/Wand.git", .upToNextMajor(from: "2.0.13") ),
+        .package(url: "https://github.com/the-wand/Any.git", .upToNextMajor(from: "1.0.3") ),
+        .package(url: "https://github.com/the-wand/Wand.git", .upToNextMajor(from: "3.0.4") ),
     ],
 
     targets: [

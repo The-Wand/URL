@@ -29,17 +29,17 @@ import Wand
 /// let task: URLSessionDataTask = request|
 ///
 @available(visionOS, unavailable)
-extension URLSessionDataTask: Obtainable {
+extension URLSessionDataTask: @retroactive Obtainable {
 
     @inline(__always)
     public 
     static 
-    func obtain(by wand: Core?) -> Self {
+    func obtain<C>(with scope: C?, by wand: Core?) -> Self {
 
         let wand = wand ?? Core()
 
         let session: URLSession = wand.get()
-        let request = URLRequest.obtain(by: wand)
+        let request: URLRequest = wand.get()
 
 //        let ask = wand.asking["Data"]?.last as? Ask<Data>
 
@@ -94,7 +94,7 @@ extension Core.Error {
     public
     static
     func HTTP(_ reason: String) -> Error {
-        Self(reason: reason)
+        Core.Error.with(reason: reason)
     }
 
 }

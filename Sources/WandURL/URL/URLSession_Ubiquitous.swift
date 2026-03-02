@@ -54,12 +54,12 @@ import Wand
 /// let session: URLSession = config|
 ///
 @available(visionOS, unavailable)
-extension URLSession: Obtainable {
+extension URLSession: @retroactive Obtainable {
 
     @inline(__always)
     public
     static
-    func obtain(by wand: Core?) -> Self {
+    func obtain<C>(with scope: C?, by wand: Core?) -> Self {
 
         let session: Self
 

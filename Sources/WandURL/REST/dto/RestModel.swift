@@ -26,7 +26,7 @@ import Wand
 
 @available(visionOS, unavailable)
 public
-protocol Rest_Model: Asking, Wanded, Codable {
+protocol Rest_Model: Ask.T, Wanded, Codable {
 
     static
     var base: String? {get}

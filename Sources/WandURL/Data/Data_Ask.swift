@@ -29,7 +29,7 @@ import Wand
 /// }
 ///
 @available(visionOS, unavailable)
-extension Data: Asking, Wanded {
+extension Data: Ask.T, Wanded {
 
     @inline(__always)
     public
@@ -49,7 +49,7 @@ extension Data: Asking, Wanded {
         //Request for a first time
 
         //Make request
-        let task = URLSessionDataTask.obtain(by: wand)
+        let task: URLSessionDataTask = wand|
         task.resume()
         
         return wand
