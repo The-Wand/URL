@@ -51,7 +51,7 @@ func + (url: URL, items: [String: String]) -> URL {
         URLQueryItem(name: $0.key, value: String(describing: $0.value))
     }
     
-    if #available(iOS 16.0, *) {
+    if #available(iOS 16.0, macOS 13.0, *) {
         return url.appending(queryItems: queryItems)
     } else {
         var components = URLComponents(url: url, resolvingAgainstBaseURL: false)!
