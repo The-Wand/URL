@@ -41,11 +41,10 @@ extension URLSessionDataTask: @retroactive Obtainable {
         let session: URLSession = wand.get()
         let request: URLRequest = wand.get()
 
+        //TODO: Key change
 //        let ask = wand.asking["Data"]?.last as? Ask<Data>
 
         let task = session.dataTask(with: request) { data, response, error in
-            
-            print(request)
             
             if let error = error {
                 wand.add(error)
@@ -71,7 +70,7 @@ extension URLSessionDataTask: @retroactive Obtainable {
             if !data.isEmpty {
                 //BUG: mimeType == "text/plain" for empty "content-type"
                 let mime = httpResponse.mimeType
-                if mime != "application/json" {
+                if mime != request.value(forHTTPHeaderField: "Accept") {
                     wand.add(Core.Error.HTTP("Mime: \(mime ?? "")"))
                     return
                 }
