@@ -24,8 +24,10 @@ import Foundation
 @_exported
 import Wand
 
+public
 struct JSON {
 
+    public
     static
     var defaultHeaders = ["Accept": "application/json",
                           "Content-Type": "application/json"]

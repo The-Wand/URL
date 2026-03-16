@@ -74,4 +74,37 @@ func | (url: URL, handler: @escaping ([Any])->() ) -> Core {
     return wand
 }
 
+/// Ask
+///
+/// core | { (array: [Any]) in
+///
+/// }
+///
+@available(visionOS, unavailable)
+@discardableResult
+@inline(__always)
+public
+func | (wand: Core, handler: @escaping ([Any])->() ) -> Core {
+
+    //Save ask
+    _ = wand.append(ask: .one(handler: handler))
+
+    //Request for a first time
+
+    //Prepare context
+    wand.putDefault(JSON.defaultHeaders)
+
+    //Perfom request
+    wand | .one { (data: Data) in
+        do {
+            let parsed = try JSONSerialization.jsonObject(with: data)
+            wand.add(parsed as! [Any])
+        } catch(let e) {
+            wand.add(e)
+        }
+    }
+
+    return wand
+}
+
 #endif

@@ -24,7 +24,7 @@ import Foundation
 @_exported
 import Wand
 
-/// Ask 
+/// Ask
 ///
 /// "https://api.github.com/gists" | { (dictionary: [String: Any]) in
 ///
@@ -40,7 +40,21 @@ func | (path: String, handler: @escaping ([String: Any])->() ) -> Core {
 
 /// Ask
 ///
-/// URL(string: "https://api.github.com/gists") | { (dictionary: [String: Any]) in
+/// ("https://api.github.com/gists", headers) | { (dictionary: [String: Any]) in
+///
+/// }
+///
+@available(visionOS, unavailable)
+@discardableResult
+@inline(__always)
+public
+func | (scope: (String, [String: String]), handler: @escaping ([String: Any])->() ) -> Core {
+    (scope.0| as URL, scope.1) | handler
+}
+
+/// Ask
+///
+/// url | { (dictionary: [String: Any]) in
 ///
 /// }
 ///
@@ -49,6 +63,20 @@ func | (path: String, handler: @escaping ([String: Any])->() ) -> Core {
 @inline(__always)
 public
 func | (url: URL, handler: @escaping ([String: Any])->() ) -> Core {
+    (url, JSON.defaultHeaders) | handler
+}
+
+/// Ask
+///
+/// (url, headers) | { (dictionary: [String: Any]) in
+///
+/// }
+///
+@available(visionOS, unavailable)
+@discardableResult
+@inline(__always)
+public
+func | (scope: (URL, [String: String]), handler: @escaping ([String: Any])->() ) -> Core {
 
     let wand = Core()
 
@@ -58,11 +86,44 @@ func | (url: URL, handler: @escaping ([String: Any])->() ) -> Core {
     //Request for a first time
 
     //Prepare context
-    wand.put(url)
-    wand.put(JSON.defaultHeaders)
+    wand.put(scope.0)
+    wand.put(scope.1)
 
     //Perfom request
-    url | .one { (data: Data) in
+    wand | .one { (data: Data) in
+        do {
+            let parsed = try JSONSerialization.jsonObject(with: data)
+            wand.add(parsed as! [String: Any])
+        } catch(let e) {
+            wand.add(e)
+        }
+    }
+
+    return wand
+}
+
+/// Ask
+///
+/// core | { (dictionary: [String: Any]) in
+///
+/// }
+///
+@available(visionOS, unavailable)
+@discardableResult
+@inline(__always)
+public
+func | (wand: Core, handler: @escaping ([String: Any])->() ) -> Core {
+
+    //Save ask
+    _ = wand.append(ask: .one(handler: handler))
+
+    //Request for a first time
+
+    //Prepare context
+    wand.putDefault(JSON.defaultHeaders)
+
+    //Perfom request
+    wand | .one { (data: Data) in
         do {
             let parsed = try JSONSerialization.jsonObject(with: data)
             wand.add(parsed as! [String: Any])
