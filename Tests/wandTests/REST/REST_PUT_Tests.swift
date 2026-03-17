@@ -44,26 +44,5 @@ class REST_PUT_Tests: XCTestCase {
 
         waitForExpectations(timeout: .default * 4)
     }
-//
-//    @available(iOS 16.0, *)
-//    func test_REST_Codable_Delete() {
-//        let e = expectation()
-//
-//        let id = (1...100).any
-//
-//        let post = JSONplaceholderAPI.Post(id: id,
-//                                           userId: .any,
-//                                           title: nil,
-//                                           body: nil)
-//        post | .delete { (done: JSONplaceholderAPI.Post) in
-//
-//            if done.id == id {
-//                e.fulfill()
-//            }
-//
-//        }
-//
-//        waitForExpectations()
-//    }
 
 }
