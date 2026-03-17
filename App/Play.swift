@@ -16,8 +16,6 @@
 /// Created by Alex Kozin
 /// El Machine 🤖
 
-import AVFoundation
-
 import SwiftUI
 import WandURL
 
@@ -43,51 +41,6 @@ struct ContentView: View {
             Text("Hello, world!")
         }
         .padding()
-        .onAppear(perform: load)
-
-    }
-
-    func load() {
-
-        do {
-            try AVAudioSession.sharedInstance().setCategory(.ambient)
-            try AVAudioSession.sharedInstance().setActive(true)
-        } catch {
-            print(error.localizedDescription)
-        }
-
-        Wand.Log.level = .verbose
-
-        let query = "паша+техник"
-        let path = "https://itunes.apple.com/search?term=\(query)&entity=song&limit=5"
-
-        var headers = JSON.defaultHeaders
-        headers["Accept"] = "text/javascript"
-
-        let player = AVQueuePlayer()
-
-        var prev: AVPlayerItem? = nil
-
-        (path, headers) | { (raw: [String: Any]) in
-
-            let result = raw["results"] as! [[String: Any]]
-
-            result | {
-
-                let path = $0["previewUrl"] as! String
-
-                let item = AVPlayerItem(url: path|)
-                player.insert(item, after: prev)
-
-                prev = item
-
-            } as Void
-
-            player.play()
-
-        } |? { (e: Error) in
-            print(e)
-        }
 
     }
 }
