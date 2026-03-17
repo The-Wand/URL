@@ -108,4 +108,45 @@ extension Ask {
 
 }
 
+@available(visionOS, unavailable)
+public
+extension Rest_Model {
+
+    @inline(__always)
+    public
+    static
+    var get: Ask<Self>.Get {
+        .init(once: true)
+    }
+
+    @inline(__always)
+    public
+    static
+    var post: Ask<Self>.Post {
+        .init(once: true)
+    }
+
+    @inline(__always)
+    public
+    static
+    var put: Ask<Self>.Put {
+        .init(once: true)
+    }
+
+    @inline(__always)
+    public
+    static
+    var delete: Ask<Self>.Delete {
+        .init(once: true)
+    }
+
+    @inline(__always)
+    public
+    static
+    var head: Ask<Self>.Head {
+        .init(once: true)
+    }
+
+}
+
 #endif

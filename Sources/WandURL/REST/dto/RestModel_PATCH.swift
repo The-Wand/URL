@@ -26,25 +26,43 @@ import Wand
 
 /// Ask
 ///
-/// wand | .delete { (done: T) in
+/// dto | .patch { (done: DTO) in
 ///
 /// }
 ///
 @available(visionOS, unavailable)
 @inline(__always)
 @discardableResult
-public 
-func |<T: Rest.Model> (wand: Core, delete: Ask<T>.Delete) -> Core {
+public
+func |<T: Rest.Model> (dto: T, patch: Ask<T>.Patch) -> Core {
 
+    let wand = dto.wand
+    wand.put(dto| as Data)
+
+    return wand | patch
+}
+
+/// Ask
+///
+/// wand | .put { (done: T) in
+///
+/// }
+///
+@available(visionOS, unavailable)
+@inline(__always)
+@discardableResult
+public
+func |<T: Rest.Model> (wand: Core, patch: Ask<T>.Patch) -> Core {
+
+    wand.putDefault(T.path| as URL)
     wand.putDefault(T.headers)
-    wand.putDefault(Rest.Method.DELETE)
+    wand.putDefault(Rest.Method.PATCH)
 
-    _ = wand.append(ask: delete)
+    _ = wand.append(ask: patch)
     return wand | .one { (data: Data) in
 
         let model: T = wand.get()!
         wand.add(model)
-
     }
 }
 

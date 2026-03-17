@@ -55,47 +55,51 @@ extension Rest_Model {
     var headers: [String : String] {
         JSON.defaultHeaders
     }
-    
-}
-
-@available(visionOS, unavailable)
-extension Rest_Model {
 
     @inline(__always)
     public
     static
-    var get: Ask<Self>.Get {
-        .init(once: true)
+    func ask<C, T>(with context: C, ask: Ask<T>) -> Core {
+
+        let wand = Wand.Core.to(context)
+
+        let M = T.self as! Rest.Model.Type
+        wand.putDefault(M.path| as URL)
+        wand.putDefault(M.headers)
+
+        _ = wand.append(ask: ask)
+
+        return wand | .one { [weak wand] (data: Data) in
+
+            guard let wand else {
+                return
+            }
+
+            do { if
+                let method: Rest.Method = wand.get(),
+                method != .GET,
+                let object: T = wand.get()
+                {
+                wand.add(object)
+            }
+                else
+                {
+                    let D = (T.self as! Decodable.Type).self
+
+                    let decoder = wand.get() ?? JSONDecoder()
+                    decoder.keyDecodingStrategy = wand.get() ?? .useDefaultKeys
+
+                    let reply = try decoder.decode(D, from: data)
+
+                    wand.add(reply as! T)
+                }}
+            catch(let e)
+            {
+                wand.add(e)
+            }
+
+        }
     }
-
-    @inline(__always)
-    public
-    static
-    var post: Ask<Self>.Post {
-        .init(once: true)
-    }
-
-    @inline(__always)
-    public
-    static
-    var put: Ask<Self>.Put {
-        .init(once: true)
-    }
-
-    //TODO:
-    @inline(__always)
-    public
-    static
-    var delete: Ask<Self>.Get {
-        .init(once: true)
-    }
-
-    @inline(__always)
-    public
-    static
-    var head: Ask<Self>.Get {
-        .init(once: true)
-    }//
 
 }
 
