@@ -18,8 +18,8 @@
 
 import XCTest
 
+import Any_
 import WandURL
-import Wand
 
 @available(visionOS, unavailable)
 class REST_GET_Tests: XCTestCase {
@@ -62,4 +62,4 @@ class REST_GET_Tests: XCTestCase {
         waitForExpectations(timeout: .default * 2)
     }
 
-}
+} 

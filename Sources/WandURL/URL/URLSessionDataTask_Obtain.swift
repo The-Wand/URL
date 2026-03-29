@@ -40,28 +40,39 @@ extension URLSessionDataTask: @retroactive Obtainable {
         let request: URLRequest = wand.get()
 
         //TODO: Key change
-//        let ask = wand.asking["Data"]?.last as? Ask<Data>
+//        let ask = wand.ask["Data"]?.last as? Ask<Data>
 
-        let task = session.dataTask(with: request) { data, response, error in
-            
+        var handler: (@Sendable (Data?, URLResponse?, (any Error)?) -> Void)!
+        handler = { data, response, error in
+
+
+            let retry = {
+                let task = session.dataTask(with: request, completionHandler: handler)
+                wand.add(task)
+
+//                handler = nil //?
+
+                task.resume()
+            }
+
             if let error = error {
-                wand.add(error)
+                wand.add(error, retry: retry)
                 return
             }
 
             guard let httpResponse = response as? HTTPURLResponse else {
-                wand.add(Core.Error.HTTP("Not http?"))
+                wand.add(Core.Error.HTTP("Not http?"), retry: retry)
                 return
             }
 
             let statusCode = httpResponse.statusCode
             if !(200...299).contains(httpResponse.statusCode)  {
-                wand.add(Core.Error.HTTP("Code: \(statusCode)"))
+                wand.add(Core.Error.HTTP("Code: \(statusCode)"), retry: retry)
                 return
             }
 
             guard let data = data else {
-                wand.add(Core.Error.HTTP("No data"))
+                wand.add(Core.Error.HTTP("No data"), retry: retry)
                 return
             }
 
@@ -69,7 +80,7 @@ extension URLSessionDataTask: @retroactive Obtainable {
                 //BUG: mimeType == "text/plain" for empty "content-type"
                 let mime = httpResponse.mimeType
                 if mime != request.value(forHTTPHeaderField: "Accept") {
-                    wand.add(Core.Error.HTTP("Mime: \(mime ?? "")"))
+                    wand.add(Core.Error.HTTP("Mime: \(mime ?? "")"), retry: retry)
                     return
                 }
             }
@@ -77,7 +88,9 @@ extension URLSessionDataTask: @retroactive Obtainable {
             wand.add(httpResponse)
             wand.add(data)//, for: ask?.key)
 
-        } as! Self
+        }
+
+        let task = session.dataTask(with: request, completionHandler: handler)  as! Self
 
         return task
 
@@ -86,7 +99,7 @@ extension URLSessionDataTask: @retroactive Obtainable {
 }
 
 public
-extension Core.Error {
+extension Error {
 
     public
     static

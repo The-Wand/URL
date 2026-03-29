@@ -17,6 +17,8 @@
 		6152699B2CC2B6FA006C4EB0 /* REST_DELETE_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 615269992CC2B6FA006C4EB0 /* REST_DELETE_Tests.swift */; };
 		6152699D2CC2B837006C4EB0 /* REST_PATCH_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6152699C2CC2B837006C4EB0 /* REST_PATCH_Tests.swift */; };
 		6152699E2CC2B837006C4EB0 /* REST_PATCH_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6152699C2CC2B837006C4EB0 /* REST_PATCH_Tests.swift */; };
+		615FC2D12F6D42BB00BE1806 /* REST_Retry_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 615FC2D02F6D42BB00BE1806 /* REST_Retry_Tests.swift */; };
+		615FC2D22F6D42BB00BE1806 /* REST_Retry_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 615FC2D02F6D42BB00BE1806 /* REST_Retry_Tests.swift */; };
 		6162625428BC8E2B00D63EA5 /* Play.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6162624528BC8E2A00D63EA5 /* Play.swift */; };
 		6162625828BC8E2B00D63EA5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6162624728BC8E2B00D63EA5 /* Assets.xcassets */; };
 		617C7CF02C184FA200FFEA14 /* Package.xctestplan in Resources */ = {isa = PBXBuildFile; fileRef = 617C7CCE2C184FA200FFEA14 /* Package.xctestplan */; };
@@ -85,6 +87,7 @@
 		615269962CC2B606006C4EB0 /* REST_HEAD_Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = REST_HEAD_Tests.swift; sourceTree = "<group>"; };
 		615269992CC2B6FA006C4EB0 /* REST_DELETE_Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = REST_DELETE_Tests.swift; sourceTree = "<group>"; };
 		6152699C2CC2B837006C4EB0 /* REST_PATCH_Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = REST_PATCH_Tests.swift; sourceTree = "<group>"; };
+		615FC2D02F6D42BB00BE1806 /* REST_Retry_Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = REST_Retry_Tests.swift; sourceTree = "<group>"; };
 		6162624528BC8E2A00D63EA5 /* Play.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Play.swift; sourceTree = "<group>"; };
 		6162624728BC8E2B00D63EA5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		6162624C28BC8E2B00D63EA5 /* Play.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Play.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -217,6 +220,7 @@
 				617C7CC22C184FA200FFEA14 /* Model */,
 				617C7CC42C184FA200FFEA14 /* REST_GET_Tests.swift */,
 				617C7CC32C184FA200FFEA14 /* REST_GET_Array_Tests.swift */,
+				615FC2D02F6D42BB00BE1806 /* REST_Retry_Tests.swift */,
 				617C7CC52C184FA200FFEA14 /* REST_POST_Tests.swift */,
 				617C7CC62C184FA200FFEA14 /* REST_PUT_Tests.swift */,
 				615269962CC2B606006C4EB0 /* REST_HEAD_Tests.swift */,
@@ -495,6 +499,7 @@
 				617C7CF72C184FCD00FFEA14 /* Unit.swift in Sources */,
 				617C7CF82C184FCD00FFEA14 /* REST_POST_Tests.swift in Sources */,
 				617C7CF92C184FCD00FFEA14 /* XCTestCase.swift in Sources */,
+				615FC2D22F6D42BB00BE1806 /* REST_Retry_Tests.swift in Sources */,
 				617C7CFA2C184FCD00FFEA14 /* JSON_Array_Tests.swift in Sources */,
 				617C7CFB2C184FCD00FFEA14 /* JSON_Dictionary_Tests.swift in Sources */,
 				6152699B2CC2B6FA006C4EB0 /* REST_DELETE_Tests.swift in Sources */,
@@ -529,6 +534,7 @@
 				617C7D072C184FCE00FFEA14 /* Unit.swift in Sources */,
 				617C7D082C184FCE00FFEA14 /* REST_POST_Tests.swift in Sources */,
 				617C7D092C184FCE00FFEA14 /* XCTestCase.swift in Sources */,
+				615FC2D12F6D42BB00BE1806 /* REST_Retry_Tests.swift in Sources */,
 				617C7D0A2C184FCE00FFEA14 /* JSON_Array_Tests.swift in Sources */,
 				617C7D0B2C184FCE00FFEA14 /* JSON_Dictionary_Tests.swift in Sources */,
 				6152699A2CC2B6FA006C4EB0 /* REST_DELETE_Tests.swift in Sources */,
@@ -575,7 +581,7 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 601;
+				CURRENT_PROJECT_VERSION = 757;
 				DEVELOPMENT_ASSET_PATHS = "";
 				DEVELOPMENT_TEAM = LZSP4Z4B6A;
 				ENABLE_PREVIEWS = YES;
@@ -635,7 +641,7 @@
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 601;
+				CURRENT_PROJECT_VERSION = 757;
 				DEVELOPMENT_ASSET_PATHS = "";
 				DEVELOPMENT_TEAM = LZSP4Z4B6A;
 				ENABLE_NS_ASSERTIONS = NO;
@@ -688,7 +694,7 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 601;
+				CURRENT_PROJECT_VERSION = 757;
 				DEVELOPMENT_TEAM = LZSP4Z4B6A;
 				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu17;
@@ -736,7 +742,7 @@
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 601;
+				CURRENT_PROJECT_VERSION = 757;
 				DEVELOPMENT_TEAM = LZSP4Z4B6A;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_USER_SCRIPT_SANDBOXING = YES;
@@ -798,7 +804,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_ENTITLEMENTS = App/Entitlements.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 601;
+				CURRENT_PROJECT_VERSION = 757;
 				DEVELOPMENT_TEAM = LZSP4Z4B6A;
 				ENABLE_HARDENED_RUNTIME = NO;
 				"ENABLE_HARDENED_RUNTIME[sdk=macosx*]" = YES;
@@ -885,7 +891,7 @@
 				CODE_SIGN_ENTITLEMENTS = App/Entitlements.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 601;
+				CURRENT_PROJECT_VERSION = 757;
 				DEVELOPMENT_TEAM = LZSP4Z4B6A;
 				ENABLE_HARDENED_RUNTIME = NO;
 				"ENABLE_HARDENED_RUNTIME[sdk=macosx*]" = YES;
@@ -947,7 +953,7 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 601;
+				CURRENT_PROJECT_VERSION = 757;
 				DEVELOPMENT_TEAM = LZSP4Z4B6A;
 				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu17;
@@ -1000,7 +1006,7 @@
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 601;
+				CURRENT_PROJECT_VERSION = 757;
 				DEVELOPMENT_TEAM = LZSP4Z4B6A;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_USER_SCRIPT_SANDBOXING = YES;
