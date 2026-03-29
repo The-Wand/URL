@@ -49,7 +49,7 @@ extension Data: Ask.T, Wanded {
         //Request for a first time
 
         //Make request
-        let task: URLSessionDataTask = wand|
+        let task: URLSessionDataTask = wand.get()
         task.resume()
         
         return wand
