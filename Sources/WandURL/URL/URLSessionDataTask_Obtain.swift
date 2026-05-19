@@ -40,7 +40,7 @@ extension URLSessionDataTask: @retroactive Obtainable {
         let request: URLRequest = wand.get()
 
         //TODO: Key change
-        let ask = scope as! Ask<C>
+//        let ask = scope as! Ask<C>
         
         var handler: (@Sendable (Data?, URLResponse?, (any Error)?) -> Void)!
         handler = { data, response, error in
@@ -86,7 +86,8 @@ extension URLSessionDataTask: @retroactive Obtainable {
             }
 
             wand.add(httpResponse)
-            wand.add(data, for: ask.key)
+            let key = (scope as? Protocolable)?.key
+            wand.add(data, for: key)
             
             //wand.add(data)//, for: ask?.key)
         }

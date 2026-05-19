@@ -65,12 +65,25 @@ extension TypicodeAPI.Post: TypicodeAPI.Model {
 func |(id: Int,
        get: Ask<TypicodeAPI.Post>.Get) -> Core {
 
-    let wand: Core = nil
+    let wand = Core.to(id)
 
     let path = TypicodeAPI.Post.path + "/\(id)"
     wand.put(path)
 
     return wand | get
+}
+
+@discardableResult
+@inline(__always)
+func |(wand: Core,
+       get: Ask<TypicodeAPI.Post>.Get) -> Core {
+    
+    let id: Int = wand.get()!
+    
+    let path = TypicodeAPI.Post.path + "/\(id)"
+    wand.put(path)
+    
+    return TypicodeAPI.Post.ask(with: wand, ask: get)
 }
 
 /// Delete Post

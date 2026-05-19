@@ -17,7 +17,7 @@
 	<key>CFBundleShortVersionString</key>
 	<string>$(MARKETING_VERSION)</string>
 	<key>CFBundleVersion</key>
-	<string>776</string>
+	<string>811</string>
 	<key>UIBackgroundModes</key>
 	<array>
 		<string>fetch</string>

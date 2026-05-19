@@ -42,7 +42,7 @@ extension GitHubAPI.Repo: GitHubAPI.Model {
 func |(id: Int,
        get: Ask<GitHubAPI.Repo>.Get) -> Core {
 
-    let wand: Core = nil
+    let wand = Core.to(id)
 
     let path = GitHubAPI.Repo.path + "/\(id)"
     wand.put(path| as URL)

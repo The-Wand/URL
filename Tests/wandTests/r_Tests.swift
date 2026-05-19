@@ -22,7 +22,7 @@ import Any_
 import WandURL
 
 @available(visionOS, unavailable)
-class REST_Retry_Tests: XCTestCase {
+class r_Tests: XCTestCase {
 
     func test_retry_once() {
 

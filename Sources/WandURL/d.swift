@@ -1,5 +1,5 @@
 ///
-/// Copyright 2020 Aleksandr Kozin
+/// Copyright 2569 Aleksander Kozin
 ///
 /// Licensed under the Apache License, Version 2.0 (the "License");
 /// you may not use this file except in compliance with the License.
@@ -13,41 +13,35 @@
 /// See the License for the specific language governing permissions and
 /// limitations under the License.
 ///
-/// Created by Alek Kozin
-/// El Machine 🤖
+/// Created by Aleksander Kozin
+/// The Wand
 
-#if canImport(Foundation)
-@_exported
-import Foundation
-
-import Wand
-
-/// Ask
-///
-/// "https://api.github.com/gists" | { (data: Data) in
-///
-/// }
-///
-@available(visionOS, unavailable)
-extension Data: Ask.T, Wanded {
-
+public
+extension Ask {
+    
     @inline(__always)
     public
-    static
-    func ask<C, T>(with context: C, ask: Ask<T>) -> Core {
-
-        let wand = Wand.Core.to(context)
-        
-        guard wand.append(ask: ask.breached()) else {
-            return wand
-        }
-
-        let task: URLSessionDataTask = ask|
-        task.resume()
-        
-        return wand
+    func breached() -> Self {
+        self.key = UUID().uuidString
+        return self
     }
-
+    
 }
 
-#endif
+@inline(__always)
+postfix
+public
+func |<U, T: Obtainable>(ask: Ask<U>) -> T {
+    T.obtain(with: ask, by: ask.core)
+}
+
+public
+protocol Protocolable {
+    
+    var key: String {get}
+    
+}
+
+extension Ask: Protocolable {
+    
+}

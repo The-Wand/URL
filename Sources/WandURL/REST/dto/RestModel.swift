@@ -57,9 +57,9 @@ extension Rest_Model {
     @inline(__always)
     public
     static
-    func ask<C, T>(with context: C, ask: Ask<T>) -> Core {
+    func ask<C, T>(with scope: C, ask: Ask<T>) -> Core {
 
-        let wand = Wand.Core.to(context)
+        let wand = Wand.Core.to(scope)
 
         let M = T.self as! Rest.Model.Type
         wand.putDefault(M.path| as URL)
