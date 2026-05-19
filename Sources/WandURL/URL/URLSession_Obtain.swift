@@ -21,31 +21,6 @@
 import Foundation.NSURLSession
 @_exported
 import Wand
-//
-///// Access
-/////
-///// let session: URLSession = config|
-/////
-//@available(visionOS, unavailable)
-//extension URLSession: Ubiquitous {
-//
-//    	@inline(__always)
-//    	static
-//    	func access() -> Self {
-//
-//        	let session: Self
-//
-//        	if let config: URLSessionConfiguration = wand?.get() {
-//            	session = Self(configuration: config)
-//        	} else {
-//        	    session = Self.shared as! Self
-//        	}
-//
-//        	return session
-//    	}
-//
-//}
-//
 
 /// Obtain
 ///
@@ -58,16 +33,11 @@ extension URLSession: @retroactive Obtainable {
     public
     static
     func obtain<C>(with scope: C?, by wand: Core?) -> Self {
-
-        let session: Self
-
-        if let config: URLSessionConfiguration = wand?.get() {
-            session = Self(configuration: config)
+        if let config = scope as? URLSessionConfiguration ?? wand?.get() {
+            Self(configuration: config)
         } else {
-            session = Self.shared as! Self
+            Self.shared as! Self
         }
-
-        return session
     }
 
 }

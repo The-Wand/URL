@@ -162,7 +162,6 @@ class REST_Retry_Tests: XCTestCase {
                 } as Void
             }
 
-
         } |? Retry.after(1, attempts: bound) |? .while { (retry: Retry, count: Int) in
 
             DispatchQueue.main.async {

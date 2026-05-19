@@ -36,19 +36,12 @@ extension Data: Ask.T, Wanded {
     static
     func ask<C, T>(with context: C, ask: Ask<T>) -> Core {
 
-//        let request: URLRequest = wand.obtain()
-//        ask.key = request.hashValue|
-
         let wand = Wand.Core.to(context)
         
-        //Save ask
-        guard wand.append(ask: ask) else {
+        guard wand.append(ask: ask.breached()) else {
             return wand
         }
 
-        //Request for a first time
-
-        //Make request
         let task: URLSessionDataTask = wand.get()
         task.resume()
         
@@ -58,3 +51,20 @@ extension Data: Ask.T, Wanded {
 }
 
 #endif
+
+extension Ask {
+    
+    @inline(__always)
+    func breached() -> Self {
+        self.key = UUID().uuidString
+        return self
+    }
+    
+}
+
+@inline(__always)
+postfix
+public
+func |<U, T: Obtainable>(ask: Ask<U>) -> T {
+    T.obtain(with: ask, by: Core())//ask.core)
+}

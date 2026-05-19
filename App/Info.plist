@@ -17,7 +17,11 @@
 	<key>CFBundleShortVersionString</key>
 	<string>$(MARKETING_VERSION)</string>
 	<key>CFBundleVersion</key>
-	<string>757</string>
+	<string>776</string>
+	<key>UIBackgroundModes</key>
+	<array>
+		<string>fetch</string>
+	</array>
 	<key>UILaunchStoryboardName</key>
 	<string></string>
 	<key>UISupportedInterfaceOrientations~ipad</key>

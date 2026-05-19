@@ -40,8 +40,8 @@ extension URLSessionDataTask: @retroactive Obtainable {
         let request: URLRequest = wand.get()
 
         //TODO: Key change
-//        let ask = wand.ask["Data"]?.last as? Ask<Data>
-
+        let ask = scope as! Ask<C>
+        
         var handler: (@Sendable (Data?, URLResponse?, (any Error)?) -> Void)!
         handler = { data, response, error in
 
@@ -78,7 +78,7 @@ extension URLSessionDataTask: @retroactive Obtainable {
 
             if !data.isEmpty {
                 //BUG: mimeType == "text/plain" for empty "content-type"
-                let mime = httpResponse.mimeType
+                let mime = httpResponse.mimeType //TODO: handle request.value(forHTTPHeaderField: "Accept") == nil
                 if mime != request.value(forHTTPHeaderField: "Accept") {
                     wand.add(Core.Error.HTTP("Mime: \(mime ?? "")"), retry: retry)
                     return
@@ -86,14 +86,14 @@ extension URLSessionDataTask: @retroactive Obtainable {
             }
 
             wand.add(httpResponse)
-            wand.add(data)//, for: ask?.key)
-
+            wand.add(data, for: ask.key)
+            
+            //wand.add(data)//, for: ask?.key)
         }
 
         let task = session.dataTask(with: request, completionHandler: handler)  as! Self
 
         return task
-
     }
 
 }
@@ -110,3 +110,4 @@ extension Error {
 }
 
 #endif
+

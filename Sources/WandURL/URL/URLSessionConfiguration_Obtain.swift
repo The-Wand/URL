@@ -17,29 +17,27 @@
 /// The Wand
 
 #if canImport(Foundation)
+@_exported
 import Foundation.NSURLSession
+@_exported
 import Wand
 
 /// Obtain
 ///
-/// let cache = URLCache.self|
+/// let
 ///
 @available(visionOS, unavailable)
-extension URLCache: Obtainable {
-
-    public
-    static
-    func obtain<C>(with scope: C?, by wand: Wand.Core?) -> Self {
-        Self.shared as! Self
-    }
+extension URLSessionConfiguration: @retroactive Obtainable {
 
     @inline(__always)
-    @discardableResult
-    prefix
+    public
     static
-    func | (object: URLCache) -> Self {
-        Self.shared = object
-        return object as! Self
+    func obtain<C>(with scope: C?, by wand: Core?) -> Self {
+        if let backgroundIdentifier = scope as? String ?? wand?.get() {
+            Self.background(withIdentifier: backgroundIdentifier) as! Self
+        } else {
+            Self.default as! Self
+        }
     }
 
 }
