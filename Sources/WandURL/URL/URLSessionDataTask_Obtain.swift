@@ -37,7 +37,7 @@ extension URLSessionDataTask: @retroactive Obtainable {
         let wand = wand ?? Core()
 
         let session: URLSession = wand.get()
-        let request: URLRequest = wand.get()
+        let request: URLRequest = wand-
 
         //TODO: Key change
 //        let ask = scope as! Ask<C>
@@ -112,3 +112,13 @@ extension Error {
 
 #endif
 
+/// Extract
+postfix operator -
+
+@discardableResult
+@inline(__always)
+postfix
+public
+func -<T: Obtainable>(wand: Core) -> T {
+    T.obtain(with: wand, by: wand)
+}

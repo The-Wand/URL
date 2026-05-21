@@ -25,7 +25,7 @@ extension TypicodeAPI {
 
         let id: Int
 
-        let userId: Int
+        let userId: Int?
         let title: String?
         let body: String?
 

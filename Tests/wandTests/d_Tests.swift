@@ -27,7 +27,7 @@ class d_Tests: XCTestCase {
     func test_breached_once() {
         
         let e = expectation()
-        e.assertForOverFulfill = false
+        e.assertForOverFulfill = true
         e.expectedFulfillmentCount = 2
         
         let id = 1
@@ -35,8 +35,13 @@ class d_Tests: XCTestCase {
         //Wand.Log.level = .verbose
         let wand = id | .get { (repo: GitHubAPI.Repo) in
             
-            print(repo)
-            e.fulfill()
+            if
+                repo.id == id,
+                repo.name == "grit"
+            {
+                e.fulfill()
+            }
+            
         } | .get { (post: TypicodeAPI.Post) in
             
             print(post)
