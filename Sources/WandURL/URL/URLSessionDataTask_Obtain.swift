@@ -56,23 +56,23 @@ extension URLSessionDataTask: @retroactive Obtainable {
             }
 
             if let error = error {
-                wand.add(error, retry: retry)
+                wand + error & retry
                 return
             }
 
             guard let httpResponse = response as? HTTPURLResponse else {
-                wand.add(Core.Error.HTTP("Not http?"), retry: retry)
+                wand + Core.Error.HTTP("Not http?") & retry
                 return
             }
 
             let statusCode = httpResponse.statusCode
             if !(200...299).contains(httpResponse.statusCode)  {
-                wand.add(Core.Error.HTTP("Code: \(statusCode)"), retry: retry)
+                wand.add((Core.Error.HTTP("Code: \(statusCode)"), retry))
                 return
             }
 
             guard let data = data else {
-                wand.add(Core.Error.HTTP("No data"), retry: retry)
+                wand.add((Core.Error.HTTP("No data"), retry))
                 return
             }
 
@@ -80,13 +80,13 @@ extension URLSessionDataTask: @retroactive Obtainable {
                 //BUG: mimeType == "text/plain" for empty "content-type"
                 let mime = httpResponse.mimeType //TODO: handle request.value(forHTTPHeaderField: "Accept") == nil
                 if mime != request.value(forHTTPHeaderField: "Accept") {
-                    wand.add(Core.Error.HTTP("Mime: \(mime ?? "")"), retry: retry)
+                    wand.add((Core.Error.HTTP("Mime: \(mime ?? "")"), retry))
                     return
                 }
             }
 
             wand.add(httpResponse)
-            let key = (scope as? Protocolable)?.key
+            let key = (scope as? Breachable)?.key
             wand.add(data, for: key)
             
             //wand.add(data)//, for: ask?.key)

@@ -29,23 +29,31 @@ import Wand
 /// }
 ///
 @available(visionOS, unavailable)
-extension Data: Ask.T, Wanded {
+extension Data: Ask.T, Safe, Wanded {
 
     @inline(__always)
     public
     static
-    func ask<C, T>(with context: C, ask: Ask<T>) -> Core {
-
+    func ask<C, T>(with context: C, ask: Ask<T>) -> Core where T: Safe {
+        
         let wand = Wand.Core.to(context)
         
         guard wand.append(ask: ask.breached()) else {
             return wand
         }
-
+        
         let task: URLSessionDataTask = ask|
         task.resume()
         
         return wand
+    }
+    
+    @inline(__always)
+    public
+    static
+    func ask<C, T>(with context: C, ask: Ask<T>) -> Core {
+//        fatalError()
+        Core()
     }
 
 }

@@ -53,14 +53,10 @@ extension Retry {
 
 }
 
+@inline(__always)
 public
-extension Core {
-
-    @inline(__always)
-    func add(_ error: any Swift.Error, retry: @escaping ()->()) {
-        add(Retry(block: retry, reason: add(error)))
-    }
-
+func &(error: Error, retry: @escaping ()->()) -> Retry {
+    Retry(block: retry, reason: error)
 }
 
 @inline(__always)
