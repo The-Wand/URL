@@ -38,7 +38,7 @@ extension Data: Ask.T, Safe, Wanded {
         
         let wand = Wand.Core.to(context)
         
-        guard wand.append(ask: ask.breached()) else {
+        guard wand + ask.breached() else {
             return wand
         }
         

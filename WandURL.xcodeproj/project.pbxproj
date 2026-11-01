@@ -9,11 +9,9 @@
 /* Begin PBXBuildFile section */
 		613966272BE0F532004C18A3 /* Play.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6162624528BC8E2A00D63EA5 /* Play.swift */; };
 		613966662BE0FB0D004C18A3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6162624728BC8E2B00D63EA5 /* Assets.xcassets */; };
-		613F9E522C0862EA0014534F /* Any_ in Frameworks */ = {isa = PBXBuildFile; productRef = 613F9E512C0862EA0014534F /* Any_ */; };
 		615159132BF76A8C001646EA /* WandURL in Frameworks */ = {isa = PBXBuildFile; productRef = 61F648C62BEA122900C2625C /* WandURL */; };
 		6162625428BC8E2B00D63EA5 /* Play.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6162624528BC8E2A00D63EA5 /* Play.swift */; };
 		6162625828BC8E2B00D63EA5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6162624728BC8E2B00D63EA5 /* Assets.xcassets */; };
-		61D3F1712C08592D00D61B31 /* Any_ in Frameworks */ = {isa = PBXBuildFile; productRef = 61D3F1702C08592D00D61B31 /* Any_ */; };
 		61F648C72BEA122900C2625C /* WandURL in Frameworks */ = {isa = PBXBuildFile; productRef = 61F648C62BEA122900C2625C /* WandURL */; };
 /* End PBXBuildFile section */
 
@@ -72,7 +70,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				613F9E522C0862EA0014534F /* Any_ in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -88,7 +85,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				61D3F1712C08592D00D61B31 /* Any_ in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -193,7 +189,6 @@
 			);
 			name = watchPlayTests;
 			packageProductDependencies = (
-				613F9E512C0862EA0014534F /* Any_ */,
 			);
 			productName = WatchPlayTests;
 			productReference = 613966482BE0F87A004C18A3 /* watchPlayTests.xctest */;
@@ -237,7 +232,6 @@
 			);
 			name = wandTests;
 			packageProductDependencies = (
-				61D3F1702C08592D00D61B31 /* Any_ */,
 			);
 			productName = Tests;
 			productReference = 618D53D12BE3C5120098DB6F /* wandTests.xctest */;
@@ -282,7 +276,6 @@
 			mainGroup = OBJ_5;
 			packageReferences = (
 				61A37BC52BE24B97007B7FEE /* XCLocalSwiftPackageReference "." */,
-				61D3F16F2C08592D00D61B31 /* XCRemoteSwiftPackageReference "Any" */,
 			);
 			productRefGroup = OBJ_138 /* Products */;
 			projectDirPath = "";
@@ -394,7 +387,7 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 857;
+				CURRENT_PROJECT_VERSION = 860;
 				DEVELOPMENT_ASSET_PATHS = "";
 				DEVELOPMENT_TEAM = 3XA88Z6FZN;
 				ENABLE_PREVIEWS = YES;
@@ -454,7 +447,7 @@
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 857;
+				CURRENT_PROJECT_VERSION = 860;
 				DEVELOPMENT_ASSET_PATHS = "";
 				DEVELOPMENT_TEAM = 3XA88Z6FZN;
 				ENABLE_NS_ASSERTIONS = NO;
@@ -507,7 +500,7 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 857;
+				CURRENT_PROJECT_VERSION = 860;
 				DEVELOPMENT_TEAM = 3XA88Z6FZN;
 				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu17;
@@ -555,7 +548,7 @@
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 857;
+				CURRENT_PROJECT_VERSION = 860;
 				DEVELOPMENT_TEAM = 3XA88Z6FZN;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_USER_SCRIPT_SANDBOXING = YES;
@@ -617,7 +610,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_ENTITLEMENTS = App/Entitlements.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 857;
+				CURRENT_PROJECT_VERSION = 860;
 				DEVELOPMENT_TEAM = 3XA88Z6FZN;
 				ENABLE_HARDENED_RUNTIME = NO;
 				"ENABLE_HARDENED_RUNTIME[sdk=macosx*]" = YES;
@@ -704,7 +697,7 @@
 				CODE_SIGN_ENTITLEMENTS = App/Entitlements.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 857;
+				CURRENT_PROJECT_VERSION = 860;
 				DEVELOPMENT_TEAM = 3XA88Z6FZN;
 				ENABLE_HARDENED_RUNTIME = NO;
 				"ENABLE_HARDENED_RUNTIME[sdk=macosx*]" = YES;
@@ -766,7 +759,7 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 857;
+				CURRENT_PROJECT_VERSION = 860;
 				DEVELOPMENT_TEAM = 3XA88Z6FZN;
 				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu17;
@@ -819,7 +812,7 @@
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 857;
+				CURRENT_PROJECT_VERSION = 860;
 				DEVELOPMENT_TEAM = 3XA88Z6FZN;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_USER_SCRIPT_SANDBOXING = YES;
@@ -1036,28 +1029,7 @@
 		};
 /* End XCLocalSwiftPackageReference section */
 
-/* Begin XCRemoteSwiftPackageReference section */
-		61D3F16F2C08592D00D61B31 /* XCRemoteSwiftPackageReference "Any" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/el-machine/Any";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 1.0.0;
-			};
-		};
-/* End XCRemoteSwiftPackageReference section */
-
 /* Begin XCSwiftPackageProductDependency section */
-		613F9E512C0862EA0014534F /* Any_ */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 61D3F16F2C08592D00D61B31 /* XCRemoteSwiftPackageReference "Any" */;
-			productName = Any_;
-		};
-		61D3F1702C08592D00D61B31 /* Any_ */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 61D3F16F2C08592D00D61B31 /* XCRemoteSwiftPackageReference "Any" */;
-			productName = Any_;
-		};
 		61F648C62BEA122900C2625C /* WandURL */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 61A37BC52BE24B97007B7FEE /* XCLocalSwiftPackageReference "." */;

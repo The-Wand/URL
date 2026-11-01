@@ -25,7 +25,7 @@ import Wand
 public
 func | (image: UIImage?, ask: Ask<UIImage>.Operation) -> Core {
     let wand = Core.to(image)
-    _ = wand.append(ask: ask)
+    _ = wand + ask
 
 
 //    (url, "com.wand.url") | { (image: UIImage) in
@@ -111,7 +111,7 @@ extension URLSessionDownloadTask: Obtainable {
                     cache.cachedResponse(for: request) == nil,
                     let data: Data = url|
                 {
-                    wand.add(data)
+                    wand + data
 
                     cache.storeCachedResponse(CachedURLResponse(response: response, data: data), for: request)
                 }
@@ -132,7 +132,7 @@ class Delegate: NSObject, URLSessionDownloadDelegate, Wanded {
             return
         }
 
-        wand.add(location, for: "Location")
+        wand + location & "Location"
 
         if
             let request = downloadTask.originalRequest,
@@ -140,7 +140,7 @@ class Delegate: NSObject, URLSessionDownloadDelegate, Wanded {
             let data = try? Data(contentsOf: location)
         {
 
-            wand.add(data)
+            wand + data
 
             let cache: URLCache = wand.get()
             cache.storeCachedResponse(CachedURLResponse(response: response, data: data), for: request)
@@ -157,7 +157,7 @@ class Delegate: NSObject, URLSessionDownloadDelegate, Wanded {
                      totalBytesWritten: totalBytesWritten,
                      totalBytesExpectedToWrite: totalBytesExpectedToWrite)
 
-        isWanded?.add(bytes, for: "Bytes")
+        isWanded + bytes & "Bytes"
     }
 
 }

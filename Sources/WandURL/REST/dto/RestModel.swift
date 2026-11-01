@@ -65,7 +65,7 @@ extension Rest_Model {
         wand.putDefault(M.path| as URL)
         wand.putDefault(M.headers)
 
-        _ = wand.append(ask: ask)
+        _ = wand + ask
 
         return wand | .one { [weak wand] (data: Data) in
 
@@ -78,7 +78,7 @@ extension Rest_Model {
                 method != .GET,
                 let object: T = wand.get()
                 {
-                wand.add(object)
+                wand + object
             }
                 else
                 {
@@ -89,11 +89,11 @@ extension Rest_Model {
 
                     let reply = try decoder.decode(D, from: data)
 
-                    wand.add(reply as! T)
+                    wand + (reply as! T)
                 }}
-            catch(let e)
+            catch
             {
-                wand.add(e)
+                wand + error
             }
 
         }

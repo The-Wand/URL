@@ -79,7 +79,7 @@ func | (scope: (URL, [String: String]), handler: @escaping ([String: Any])->() )
     let wand = Core()
 
     //Save ask
-    _ = wand.append(ask: .one(handler: handler))
+    _ = wand + .one(handler: handler)
 
     //Request for a first time
 
@@ -91,9 +91,9 @@ func | (scope: (URL, [String: String]), handler: @escaping ([String: Any])->() )
     wand | .one { (data: Data) in
         do {
             let parsed = try JSONSerialization.jsonObject(with: data)
-            wand.add(parsed as! [String: Any])
-        } catch(let e) {
-            wand.add(e)
+            wand + (parsed as! [String: Any])
+        } catch {
+            wand + error
         }
     }
 
@@ -113,7 +113,7 @@ public
 func | (wand: Core, handler: @escaping ([String: Any])->() ) -> Core {
 
     //Save ask
-    _ = wand.append(ask: .one(handler: handler))
+    _ = wand + .one(handler: handler)
 
     //Request for a first time
 
@@ -124,9 +124,9 @@ func | (wand: Core, handler: @escaping ([String: Any])->() ) -> Core {
     wand | .one { (data: Data) in
         do {
             let parsed = try JSONSerialization.jsonObject(with: data)
-            wand.add(parsed as! [String: Any])
-        } catch(let e) {
-            wand.add(e)
+            wand + (parsed as! [String: Any])
+        } catch {
+            wand + error
         }
     }
 

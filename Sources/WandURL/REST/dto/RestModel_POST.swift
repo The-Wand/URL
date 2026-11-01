@@ -56,11 +56,11 @@ func |<T: Rest.Model> (wand: Core, post: Ask<T>.Post) -> Core {
     wand.putDefault(T.headers)
     wand.putDefault(Rest.Method.POST)
 
-    _ = wand.append(ask: post)
+    _ = wand + post
     return wand | .one { (data: Data) in
 
         let model: T = wand.get()!
-        wand.add(model)
+        wand + model
 
     }
 }

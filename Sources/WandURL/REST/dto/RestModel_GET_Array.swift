@@ -37,7 +37,7 @@ func |<T: Rest.Model> (wand: Core, get: Ask<[T]>.Get) -> Core {
     wand.putDefault(T.path| as URL)
     wand.putDefault(T.headers)
 
-    _ = wand.append(ask: get)
+    _ = wand + get
 
     return wand | .one { (data: Data) in
         
@@ -46,16 +46,16 @@ func |<T: Rest.Model> (wand: Core, get: Ask<[T]>.Get) -> Core {
                 method != .GET,
                 let object: T = wand.get()
             {
-                wand.add(object)
-            } 
+                wand + object
+            }
             else
             {
                 let reply = try JSONDecoder().decode([T].self, from: data)
-                wand.add(reply)
-            }} 
-            catch(let e)
+                wand + reply
+            }}
+            catch
             {
-                wand.add(e)
+                wand + error
             }
 
     }

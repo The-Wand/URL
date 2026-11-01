@@ -37,11 +37,11 @@ func |<T: Rest.Model> (wand: Core, delete: Ask<T>.Delete) -> Core {
     wand.putDefault(T.headers)
     wand.putDefault(Rest.Method.DELETE)
 
-    _ = wand.append(ask: delete)
+    _ = wand + delete
     return wand | .one { (data: Data) in
 
         let model: T = wand.get()!
-        wand.add(model)
+        wand + model
 
     }
 }

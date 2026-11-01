@@ -37,7 +37,7 @@ extension TypicodeAPI.Post: Any_ {
 
     public
     static
-    var any: Self {
+    var rand: Self {
         Self(id: .any,
              userId: .any,
              title: .any,
